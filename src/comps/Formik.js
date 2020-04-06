@@ -10,7 +10,12 @@ function PredictForm(props) {
     
     return (
         <div>        
-            <AnalysisController />
+            <AnalysisController /><br />
+            Summarized Results<br />
+            show one or the other<br/>
+            {/* show one or the other */}
+            <Button variant="outline-success">Good</Button><br />
+            <Button variant="outline-danger">Bad</Button>
         </div>
     )
 }
