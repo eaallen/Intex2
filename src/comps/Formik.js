@@ -14,8 +14,8 @@ function PredictForm(props) {
             Summarized Results<br />
             show one or the other<br/>
             {/* show one or the other */}
-            <Button variant="outline-success">Good</Button><br />
-            <Button variant="outline-danger">Bad</Button>
+            <Button variant="success">Good</Button><br />
+            <Button variant="danger">Bad</Button>
         </div>
     )
 }
