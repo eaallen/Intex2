@@ -19,6 +19,7 @@ function Analyze(props) {
                     </bs.Col>
                     <bs.Col>
                         <div md='8'>Results</div>
+                        <p id='msg'></p>
                     </bs.Col>
                 </bs.Row>
             </bs.Container>
