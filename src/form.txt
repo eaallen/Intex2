@@ -1,0 +1,36 @@
+<Form style={{padding:'2rem'}}>
+    <Form.Group controlId="formBasicEmail">
+        <Form.Control type="email" placeholder="Marital Status" defaultValue="Married" onChange={this.handleChange} name="marital_status" value={this.state.marital_status}/>
+    </Form.Group>
+
+    <Form.Group controlId="formBasicPassword">
+        <Form.Control type="text" placeholder="Gender" defaultValue="Male"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Income" defaultValue="10000"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Children" defaultValue="0"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Cars" defaultValue="2"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Age" defaultValue="18"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Education" defaultValue="graduate"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Occupation" defaultValue="managment"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Home Owner" defaultValue="yes"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Commute Distance" defaultValue="0-1 miles"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Region" defaultValue="Europe"/>
+    </Form.Group>
+</Form>

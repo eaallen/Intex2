@@ -24,7 +24,21 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <script>
+      async function f1(yes){
+          var tag = document.createElement("script");
+          tag.src =`https://script.google.com/macros/s/AKfycbw08TPyq7h_ZfGfN21TUzwjjYJdp_cxlvQJ08BUM3MiP7t5CzZy/exec?data=%7B%20%22Inputs%22%3A%20%7B%20%22input1%22%3A%20%7B%20%22ColumnNames%22%3A%20%5B%20%22Marital%20Status%22%2C%20%22Gender%22%2C%20%22Income%22%2C%20%22Children%22%2C%20%22Cars%22%2C%20%22Age%22%2C%20%22Education%22%2C%20%22Occupation%22%2C%20%22Home%20Owner%22%2C%20%22Commute%20Distance%22%2C%20%22Region%22%20%5D%2C%20%22Values%22%3A%20%5B%20%5B%20%22Married%22%2C%20%22Male%22%2C%20%2210000%22%2C%20%220%22%2C%20%222%22%2C%20%2218%22%2C%20%22graduate%22%2C%20%22managment%22%2C%20%22${yes}%22%2C%20%220-1%20miles%22%2C%20%22Europe%22%20%5D%20%5D%20%7D%20%7D%2C%20%22GlobalParameters%22%3A%20%7B%7D%7D`;
+          document.getElementsByTagName("head")[0].appendChild(tag);
+      }
+      function f2(data){
+          console.log('resutls',data.Results.output1.value.Values[0])
+          document.getElementById('msg').innerHTML = data.Results.output1.value.Values[0]
+
+      }
+
+    </script>
+
+    <title>Hack Nation</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
