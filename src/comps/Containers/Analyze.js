@@ -38,7 +38,8 @@ function Analyze(props) {
                         <PredictForm />
                     </bs.Col>
                     <bs.Col>
-                        <div>Results</div>
+                        <div md='8'>Results</div>
+                        <p id='msg'></p>
                     </bs.Col>
                 </bs.Row>
             </bs.Container>

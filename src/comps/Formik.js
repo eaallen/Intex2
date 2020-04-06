@@ -41,22 +41,22 @@ const AnalysisController = props => {
                 console.log('validating', values)
                 let arr_values = Object.keys(values)
                 arr_values.map( item =>{
-                    if(values.input1 == ''){
+                    if(values.input1 === ''){
                         errors.name = 'Please fill out input 1'
                     }
-                    if(values.input2 == ''){
+                    if(values.input2 === ''){
                         errors.name = 'Please fill out input 2'
                     }
-                    if(values.input3 == ''){
+                    if(values.input3 === ''){
                         errors.name = 'Please fill out input 3'
                     }
-                    if(values.input4 == ''){
+                    if(values.input4 === ''){
                         errors.name = 'Please fill out input 4'
                     }
-                    if(values.input5 == ''){
+                    if(values.input5 === ''){
                         errors.name = 'Please fill out input 5'
                     }
-                    if(values.input6 == ''){
+                    if(values.input6 === ''){
                         errors.name = 'Please fill out input 6'
                     }
                 })
@@ -82,9 +82,15 @@ const InputForm = props => (
         <Input title="Input 4:" name="input4" type="text" />
         <Input title="Input 5:" name="input5" type="text" />
         <Input title="Input 6:" name="input6" type="text" />
-        <bs.Button type='submit'>Predict</bs.Button>
+        <bs.Button type='submit' onClick={e=>handleSubmit(e, 'yes')}>Predict</bs.Button>
     </Form>    
 )
+
+const handleSubmit = async(e, yes) =>{
+    e.preventDefault()
+    document.getElementById('msg').innerHTML = ''
+    await window.f1(yes)
+}
 
 const Input = (props) => (
     <Field name={props.name}>{rProps => (
