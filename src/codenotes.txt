@@ -57,3 +57,19 @@ class App extends React.Component{
 }
 
 export default App;
+
+
+
+
+ {this.state.data? 
+                            <p>
+                                loading
+                            </p> 
+                            :
+                            <> 
+                                {this.state.data.map(item=>{return(
+                                    <Row>
+                                        <Col>{item[0]}</Col><Col>{item[1]}</Col>
+                                    </Row>
+                                )})}
+                            </>}
