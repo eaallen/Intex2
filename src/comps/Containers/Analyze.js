@@ -12,3 +12,6 @@ function Analyze(props) {
 }
 
 export default Analyze;
+
+
+//form
