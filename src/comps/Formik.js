@@ -6,28 +6,28 @@ import { Container, Row, Col, Button, Jumbotron} from 'react-bootstrap';
 
 //this is a xommit test
 
-function Checkout(props) {
+function PredictForm(props) {
     
     return (
-      
-        <CheckoutController />
-       
+        <div>        
+            <AnalysisController />
+        </div>
     )
 }
-export default Checkout
+export default PredictForm
 
 
-const CheckoutController = props => {
+const AnalysisController = props => {
     const [getError, setError] = React.useState(null)
     return (
         <Formik
             initialValues={{
-                name: 'Conrad Fox',
-                address1: '1234',
-                address2: '5678',
-                city: 'Provo',
-                // state: 'UT',
-                zipcode: '84602',
+                input1: 'first',
+                input2: 'second',
+                input3: 'third',
+                input4: 'fourth',
+                input5: 'fifth',
+                input6: 'sixth',
             }}
             validateOnChange={false}
             validateOnBlur={false}
@@ -36,46 +36,51 @@ const CheckoutController = props => {
                 console.log('validating', values)
                 let arr_values = Object.keys(values)
                 arr_values.map( item =>{
-                    if(!values[item]){
-                        errors[item] = 'Required'
+                    if(values.input1 == ''){
+                        errors.name = 'Please fill out input 1'
+                    }
+                    if(values.input2 == ''){
+                        errors.name = 'Please fill out input 2'
+                    }
+                    if(values.input3 == ''){
+                        errors.name = 'Please fill out input 3'
+                    }
+                    if(values.input4 == ''){
+                        errors.name = 'Please fill out input 4'
+                    }
+                    if(values.input5 == ''){
+                        errors.name = 'Please fill out input 5'
+                    }
+                    if(values.input6 == ''){
+                        errors.name = 'Please fill out input 6'
                     }
                 })
                 
                 return errors
             }}
             onSubmit={async (values, actions) => {
-                console.log('submit')
+                console.log('PREDICTING...')
             }}
-        >{form => (
-            <PaymentForm form={form}/>
-        )}</Formik>
+        >
+        {form => (
+            <InputForm form={form}/>
+        )}
+        </Formik>
     )
 }
 
-
-/**
- * The form layout/html.
- * This component needs finishing.
- */
-const PaymentForm = props => (
-    <Form >
-        {Object.keys(props.form.initialValues).map(item=>{
-            return(
-                <Input title="Name:" name={item} type="text" disabled={props.form.isSubmitting}/>
-            )
-        })}
-           
-    </Form>
+const InputForm = props => (
+    <Form>
+        <Input title="Input 1:" name="input1" type="text" />
+        <Input title="Input 2:" name="input2" type="text" />
+        <Input title="Input 3:" name="input3" type="text" />
+        <Input title="Input 4:" name="input4" type="text" />
+        <Input title="Input 5:" name="input5" type="text" />
+        <Input title="Input 6:" name="input6" type="text" />
+        <bs.Button type='submit'>Predict</bs.Button>
+    </Form>    
 )
 
-
-/**
- * A form input.
- *   props.title - the title that shows above the input box
- *   props.type - the type of input (see React Bootstrap Form.Control)
- *   props.placeholder - placeholder text in the input.
- * This component is finished and doesn't need additional work.
- */
 const Input = (props) => (
     <Field name={props.name}>{rProps => (
         <bs.Form.Group>
