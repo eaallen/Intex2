@@ -41,22 +41,22 @@ const AnalysisController = props => {
                 console.log('validating', values)
                 let arr_values = Object.keys(values)
                 arr_values.map( item =>{
-                    if(values.input1 == ''){
+                    if(values.input1 === ''){
                         errors.name = 'Please fill out input 1'
                     }
-                    if(values.input2 == ''){
+                    if(values.input2 === ''){
                         errors.name = 'Please fill out input 2'
                     }
-                    if(values.input3 == ''){
+                    if(values.input3 === ''){
                         errors.name = 'Please fill out input 3'
                     }
-                    if(values.input4 == ''){
+                    if(values.input4 === ''){
                         errors.name = 'Please fill out input 4'
                     }
-                    if(values.input5 == ''){
+                    if(values.input5 === ''){
                         errors.name = 'Please fill out input 5'
                     }
-                    if(values.input6 == ''){
+                    if(values.input6 === ''){
                         errors.name = 'Please fill out input 6'
                     }
                 })
