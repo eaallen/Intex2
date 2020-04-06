@@ -6,7 +6,8 @@ import * as bs from 'react-bootstrap'
 import {Row, Col,Navbar,DropdownButton,Dropdown,ButtonGroup, Nav } from 'react-bootstrap';
 import { Formik } from 'formik';
 
-function Analyze(props) {
+export default function Analyze(props) {
+    const [modalShow, setModalShow] = React.useState(false);
     return (
         <div>
             <div className={props.className}>
@@ -15,22 +16,16 @@ function Analyze(props) {
             <bs.Container>
                 <bs.Row>
                     <bs.Col md={.5}>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            Dropdown Button
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem ac
-                                cusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor
-                                e veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                                quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                                ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor s
-                                it amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labo
-                                re et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima venia
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <>
+                        <bs.Button variant="primary" onClick={() => setModalShow(true)}>
+                        About Analyze
+                        </bs.Button>
+  
+                        <MyVerticallyCenteredModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        />
+                    </>
                     </bs.Col>
                 </bs.Row><br></br>
                 <bs.Row>
@@ -47,4 +42,27 @@ function Analyze(props) {
   );
 }
 
-export default Analyze;
+function MyVerticallyCenteredModal(props) {
+    return (
+      <bs.Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <bs.Modal.Header closeButton>
+          <bs.Modal.Title id="contained-modal-title-vcenter">
+            About Analyze
+          </bs.Modal.Title>
+        </bs.Modal.Header>
+        <bs.Modal.Body>
+          <p>
+            This is all about the Analyze function
+          </p>
+        </bs.Modal.Body>
+        <bs.Modal.Footer>
+          <bs.Button onClick={props.onHide}>Close</bs.Button>
+        </bs.Modal.Footer>
+      </bs.Modal>
+    );
+  }
