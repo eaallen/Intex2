@@ -11,7 +11,7 @@ class Search extends React.Component{
         }
     }
    
-    // let data = axiosCall()
+    // calles a single record
     async queryDW (){
         axios.defaults.headers.post['Content-Type'] = 'application/json';
         //GET:/file_download/{owner}/{id}/{file}
