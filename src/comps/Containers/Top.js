@@ -19,9 +19,9 @@ function Top(props) {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-            <Nav.Link href="/home" >Home</Nav.Link>
-            <Nav.Link href="/search">Search</Nav.Link>
-            <Nav.Link href="/analyze">Analyze</Nav.Link>
+            <Link to="/home" >Home</Link>
+            <Link to="/search">Search</Link>
+            <Link to="/analyze">Analyze</Link>
         </Nav>
         <Link to='/Cart'>
           <i className="fas fa-shopping-cart"></i>
