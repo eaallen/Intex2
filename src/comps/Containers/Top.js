@@ -26,7 +26,6 @@ function Top(props) {
         <Link to='/Cart'>
           <i className="fas fa-shopping-cart"></i>
         </Link>
-        {/* ({count}) */}
         <bs.Form inline>
           <bs.FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <bs.Button variant="outline-success">Search</bs.Button>
