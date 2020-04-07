@@ -51,14 +51,12 @@ import produce from 'immer'
         doSignInWithRedirect = () => this.auth.signInWithRedirect(this.googleProvider);
         doGetRedirectResult = () => this.auth.getRedirectResult();
 
-        doUiStart = (htmlId) =>this.ui.start(htmlId, uiConfig) //"#id"
-        // doGetCurrentUser = this.auth.currentUser;
         doSignOut = () => this.auth.signOut();
         doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
         doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
         doAddRecord = (_collection) => this.db.collection(_collection).doc();
         doGetQueryRecord = (_collection, item_looking_for,filtering_item) => this.db.collection(_collection).where(item_looking_for, '==',filtering_item).get();
-        
+        getOneRecord = (_collection, item_wanted) => this.db.collection(_collection).doc(item_wanted)
         checkState = () =>{
           this.auth.onAuthStateChanged(function(user) {
             if (user){
