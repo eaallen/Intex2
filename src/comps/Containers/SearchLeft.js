@@ -91,8 +91,7 @@ class SearchLeftBase extends React.Component{
                     </Accordion.Collapse>
 
                     </Card>
-                </Accordion>
-                <Accordion>
+               
                     <Card>
                     <Link to={'/search/overview/In Need of Help'}>
                     <Card.Header>
@@ -111,8 +110,7 @@ class SearchLeftBase extends React.Component{
                     </Accordion.Collapse>
 
                     </Card>
-                </Accordion>
-                <Accordion>
+                
                     <Card>
                     <Link to={'/search/overview/Fastest to Success'}>
                     <Card.Header>
@@ -130,8 +128,7 @@ class SearchLeftBase extends React.Component{
                     </Card.Body>
                     </Accordion.Collapse>
                     </Card>
-                </Accordion>
-                <Accordion className='acordian'>
+               
                     <Card>
                     <Link to={'/search/overview/Failed Attempts'}>
                     <Card.Header>
