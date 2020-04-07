@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Button, Row,Col} from 'react-bootstrap'
+import {Container, Row,Col} from 'react-bootstrap'
 import Checkout from './comps/Formik'
 import Top from './comps/Containers/Top'
 import Home from './comps/Containers/Home'
@@ -11,18 +11,19 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { withFirebase } from './comps/Firebase';
 
 
-function App() {
-  
+function AppBase(props) {
+  console.log('props.firebase.state.dataQuerySingle',props.firebase.state.dataQuerySingle)
   return (
     <div className="App">
     <Router>
-      
+      <Container fluid> 
         <Row>
           <Col xl={12}>
             {/* <Navbar> */}
-              <Top className="bg-primary"></Top>
+              <Top></Top>
             {/* </Navbar>  */}
           </Col>
         </Row>
@@ -34,10 +35,10 @@ function App() {
                   
                   
                   <Route path="/Search" >
-                    <Search className="bg-warning"/>
+                    <Search />
                   </Route>
                   <Route path="/Analyze">
-                    <Analyze className="bg-primary" />
+                    <Analyze />
                   </Route>
                   <Route path="/" key='filter' >
                     <Home className="bg-warning"/>
@@ -49,10 +50,10 @@ function App() {
                   
           
         </Row>
-      
+      </Container> 
     </Router> 
     </div>
   );
 }
-
+const App = withFirebase(AppBase)
 export default App;

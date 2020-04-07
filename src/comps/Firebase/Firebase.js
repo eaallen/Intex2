@@ -3,6 +3,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import React from 'react' 
 import produce from 'immer'
+import axios from 'axios'
 
     const config = {
         apiKey: "AIzaSyDcnvbjnEzH9DbXmHokhh0mfqFMIFE-oVY",
@@ -15,11 +16,11 @@ import produce from 'immer'
         measurementId: "G-E4QL32GR86"
     };
    
-    class Firebase{
-        constructor() {
-          
+    class Firebase extends React.Component {
+        constructor(props) {
+          super(props)
           this.state = {
-            auth_user: null,
+            dataQuerySingle: {},
           }
           
           app.initializeApp(config);
@@ -41,7 +42,7 @@ import produce from 'immer'
         }
         getApiToken = async() => {
             const key = await this.getOneRecord('startup','exMEUpW9TkwEs0Tu5plh').get().then(doc =>{ return doc.data()}) 
-            // console.log('THIS KEY FIREBASE',key)
+            console.log('THIS KEY FIREBASE',key)
             return key.api
         }
 
@@ -74,9 +75,21 @@ import produce from 'immer'
         logUserOutOfState = () =>{
           this.state.auth_user = null
         }
-      }
-      // firestore = new Firebase()
-      // console.log("_____>>___>>",firestore.googleProvider)
-      // const db = config.firestore()
     
-    export default Firebase;
+        //=======================================================================
+        //                    QUERY DATA.WORLD FUNCTIONS
+        //=======================================================================
+        getQueryData = async(pk) =>{
+            axios.defaults.headers.post['Content-Type'] = 'application/json';
+            axios.defaults.baseURL = 'https://api.data.world/v0/sql/eaallen/covid-19';
+            axios.defaults.method= 'post'    
+            
+            const sql = "SELECT * FROM covid19_campaigns where column_a ="+`\'${pk}\'`
+            const resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
+            console.log('RESP.DATA____>',resp.data[0])
+            // this.setState({...this.state, dataQuerySingle:resp.data[0]})
+            this.state.dataQuerySingle= resp.data[0]
+        }
+        
+    }
+export default Firebase;

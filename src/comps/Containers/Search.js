@@ -8,7 +8,7 @@ class SearchBase extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            data: null,
+            data: {},
             key: null 
         }
     }
@@ -19,37 +19,31 @@ class SearchBase extends React.Component{
 
     // calles a single record
     async queryDW (){
-        console.log('-------------><><><>',this.key)
-        axios.defaults.headers.post['Content-Type'] = 'application/json';
-        const resp = await axios({
-            method: 'post',
-            url: 'https://api.data.world/v0/sql/eaallen/kandykane',
-            data: {
-                query: "SELECT *FROM customer where customer_pk ='recD8VpCeX2PwKc34'",
-                includeTableSchema: true
-            },
-            headers:{
-                
-                Authorization: this.state.key
-            }
-        });
-        console.log(resp.data)
-        
-        this.setState({...this.state, data: resp.data[1]})
+        console.log('we are in')
+        this.setState({...this.state, data: this.props.firebase.state.dataQuerySingle})
     
     }    
     render(){
+        const data = this.state.data
         return (
             <div className={this.props.className}>
-                
-                    <Row>
-                        <Col md={3} className="bg-secondary">
-                            <SearchLeft key = {this.state.key}/>
-                            <Button onClick={e=> this.queryDW()}>Search</Button>
+                {console.log('DATA----->',this.state.data)}
+                    <Row noGutters>
+                        <Col md={3}>
+                            <SearchLeft key = {this.state.key} showdata={e=>this.queryDW()}/>
                         </Col>
                         
-                        <Col md={9} className="bg-danger">
-                           {this.state.data? <>{Object.entries(this.state.data).map(item=>{ console.log(item); return(
+                        <Col md={9} >
+                        {this.state.data?
+                            <div>
+                                 <br></br>
+                                <a href={this.state.data.url}><img src={this.state.data.campaign_image_url}/></a> 
+                                <h3>{this.state.data.title}</h3>
+                            </div>
+                            :
+                            <></>
+                        }                   
+                           {this.state.data? <>{Object.entries(this.state.data).map(item=>{return(
                             <Row key={item[0]+'key'}>
                                 <Col>{item[0]}</Col><Col>{item[1]}</Col>
                             </Row>
