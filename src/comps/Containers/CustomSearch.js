@@ -4,18 +4,19 @@ import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 import AppContext from '../context/AppContext'
 import {waitingfor} from '../helpers/ListingArray'
+import {Link} from 'react-router-dom'
 function CustomSearchBase(props){  
     console.log('click')
     return(
-        <div onClick={e=>writeQuery(props)}>
+        <Link to='/search/cust'><div onClick={e=>writeQuery(props)}>
             Best of category
-        </div>
+        </div></Link>
     )
     
 }
 const writeQuery = async(props) =>{
-    const sql = "SELECT column_a, title,current_amount FROM coronavirusonly where current_amount < goal ORDER BY current_amount LIMIT 5"   
-    await props.context.getQueryData(sql)
+    const sql = "SELECT column_a, title,current_amount, social_share_total FROM coronavirusonly where current_amount < goal ORDER BY current_amount LIMIT 5"   
+    await props.context.getQueryDataAll(sql)
 
 }
 const CustomSearch = withFirebase(CustomSearchBase)

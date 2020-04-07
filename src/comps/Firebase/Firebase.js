@@ -24,11 +24,12 @@ export const AppContext = React.createContext()
             updateUserAuth: this.updateUserAuth,
             getApiToken: this.getApiToken,
             getQueryData: this.getQueryData,
-
+            getQueryDataAll: this.getQueryDataAll,
           }
           this.state = {
             dataQuerySingle: {},
             key: null,
+            dataQueryAll: null,
           }
           
           app.initializeApp(config);
@@ -88,12 +89,18 @@ export const AppContext = React.createContext()
         //                    QUERY DATA.WORLD FUNCTIONS
         //=======================================================================
         getQueryData = async(sql) =>{
+          const resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
+          console.log('RESP.DATA____>',resp.data[0])
+          this.setState({...this.state, dataQuerySingle:resp.data[0]})
+          // this.state.dataQuerySingle= resp.data[0]
+      }
+        getQueryDataAll = async(sql) =>{
             const resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
-            console.log('RESP.DATA____>',resp.data[0])
-            this.setState({...this.state, dataQuerySingle:resp.data[0]})
+            console.log('RESP.DATA____>',resp.data)
+            this.setState({...this.state, dataQueryAll:resp.data})
             // this.state.dataQuerySingle= resp.data[0]
         }
-        async componentDidMount(){
+      async componentDidMount(){
           axios.defaults.headers.post['Content-Type'] = 'application/json';
           axios.defaults.baseURL = 'https://api.data.world/v0/sql/eaallen/cleancovid';
           axios.defaults.method= 'post'    
