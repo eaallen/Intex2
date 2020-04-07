@@ -9,26 +9,18 @@ function Top(props) {
         // <div className={props.className} style={{marginBottom:'.75rem'}}>
         //     top
         // </div>
-        <bs.Navbar bg="light" expand="lg">
-        <i className="fab fa-battle-net" style={{
-          fontSize: "5rem"
-          }}>
-        </i>
-        
-      <Navbar.Brand path='/Center'>Corona Killer</Navbar.Brand>      
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+        <bs.Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar.Brand>Corona Killer</Navbar.Brand>      
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-            <Link to="/home" >Home</Link>
-            <Link to="/search">Search</Link>
-            <Link to="/analyze">Analyze</Link>
+            <Link class="text-white" to="/home" >Home</Link>
+            <Link class="text-white" to="/search">Search</Link>
+            <Link class="text-white" to="/analyze">Analyze</Link>
         </Nav>
-        <Link to='/Cart'>
-          <i className="fas fa-shopping-cart"></i>
-        </Link>
         <bs.Form inline>
-          <bs.FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <bs.Button variant="outline-success">Search</bs.Button>
+            <bs.FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <bs.Button variant="outline-light">Sign in</bs.Button>
         </bs.Form>
       </Navbar.Collapse>
       </bs.Navbar>
