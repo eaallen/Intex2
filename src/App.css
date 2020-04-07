@@ -30,6 +30,17 @@
 .acordian{
   padding: 0px;
 }
+.detial-img{
+  height: 300px;
+  width: 300px;
+  border-radius: 3%;
+}
+.detial-img :hover{
+  height: 300px;
+  width: 300px;
+  border-radius: 3%;
+  opacity: 0.5;
+}
 
 @keyframes App-logo-spin {
   from {
