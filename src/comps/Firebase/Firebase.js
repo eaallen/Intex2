@@ -11,7 +11,7 @@ import produce from 'immer'
         projectId: "gofundmecovid",
         storageBucket: "gofundmecovid.appspot.com",
         messagingSenderId: "458165374679",
-        appId: "1:458165374679:web:d6bcaceabb642ee5836a92",
+        appId: "1:458165374679:web:d6bcaceabb642ee5836a92", 
         measurementId: "G-E4QL32GR86"
     };
    
@@ -39,7 +39,11 @@ import produce from 'immer'
           // this.state.auth_user = userInfo          
           // this.setState({auth_user: userInfo})
         }
-
+        getApiToken = async() => {
+            const key = await this.getOneRecord('startup','exMEUpW9TkwEs0Tu5plh').get().then(doc =>{ return doc.data()}) 
+            // console.log('THIS KEY FIREBASE',key)
+            return key.api
+        }
 
         doCreateUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password);
 

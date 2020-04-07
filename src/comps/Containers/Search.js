@@ -1,32 +1,26 @@
 import React,{useContext} from 'react';
 import { useHistory } from "react-router-dom";
 import {Row, Col, Button} from 'react-bootstrap';
-import axios from 'axios'
-import { wait } from '@testing-library/react';
-import {withFirebase} from '../Firebase'
+import axios from 'axios';
+import {withFirebase} from '../Firebase';
+import SearchLeft from './SearchLeft';
 class SearchBase extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             data: null,
+            key: null 
         }
     }
-   
+    async componentDidMount(){
+        // this.props.firebase.getApiToken() returns api key from fireStore
+        this.setState({...this.state, key: await this.props.firebase.getApiToken()})
+    }
+
     // calles a single record
     async queryDW (){
+        console.log('-------------><><><>',this.key)
         axios.defaults.headers.post['Content-Type'] = 'application/json';
-        const apikey = this.props.firebase.getOneRecord('startup','exMEUpW9TkwEs0Tu5plh')
-        
-        const key = await apikey.get().then(doc =>{         
-                console.log("Document data:", doc.data());
-                return doc.data()
-               // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }).catch(function(error) {
-                console.log("Error getting document:", error);
-            })
-            console.log('=========', key)
-        //GET:/file_download/{owner}/{id}/{file}
         const resp = await axios({
             method: 'post',
             url: 'https://api.data.world/v0/sql/eaallen/kandykane',
@@ -36,7 +30,7 @@ class SearchBase extends React.Component{
             },
             headers:{
                 
-                Authorization: key.api,
+                Authorization: this.state.key
             }
         });
         console.log(resp.data)
@@ -50,7 +44,7 @@ class SearchBase extends React.Component{
                 
                     <Row>
                         <Col md={3} className="bg-secondary">
-                            search bar
+                            <SearchLeft key = {this.state.key}/>
                             <Button onClick={e=> this.queryDW()}>Search</Button>
                         </Col>
                         
