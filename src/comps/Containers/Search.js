@@ -4,6 +4,14 @@ import {Row, Col, Button} from 'react-bootstrap';
 import axios from 'axios';
 import {withFirebase} from '../Firebase';
 import SearchLeft from './SearchLeft';
+import SearchOverView from './SearchOverView'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+  } from "react-router-dom";
+
+  
 class SearchBase extends React.Component{
     constructor(props){
         super(props)
@@ -34,21 +42,31 @@ class SearchBase extends React.Component{
                         </Col>
                         
                         <Col md={9} >
-                        {this.state.data?
-                            <div>
-                                 <br></br>
-                                <a href={this.state.data.url}><img src={this.state.data.campaign_image_url}/></a> 
-                                <h3>{this.state.data.title}</h3>
-                            </div>
-                            :
-                            <></>
-                        }                   
-                           {this.state.data? <>{Object.entries(this.state.data).map(item=>{return(
-                            <Row key={item[0]+'key'}>
-                                <Col>{item[0]}</Col><Col>{item[1]}</Col>
-                            </Row>
-                           )})}</>:<></>}
-                           
+                            
+                                <Switch>
+                                    <Route path="/search/overview/:title">
+                                        <SearchOverView title={"Exceeded Goal"}/>
+                                    </Route>
+                                    <Route path='/search/detial'>
+                                        {this.state.data?
+                                            <div>
+                                                <br></br>
+                                                <a href={this.state.data.url}>
+                                                    <img className='detial-img'src={this.state.data.campaign_image_url}/>
+                                                </a> 
+                                                <h3>{this.state.data.title}</h3>
+                                            </div>
+                                            :
+                                            <></>
+                                        }
+                                                
+                                        {this.state.data? <>{Object.entries(this.state.data).map(item=>{return(
+                                            <Row key={item[0]+'key'}>
+                                                <Col>{item[0]}</Col><Col>{item[1]}</Col>
+                                            </Row>
+                                        )})}</>:<></>}
+                                    </Route>
+                                </Switch>
                            
                         </Col>
                     </Row>    
