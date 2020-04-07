@@ -11,7 +11,7 @@ function ListingArrayBase(props){
                     item = Object.values(item)
                     return(
                     <Link to='/search/detial' key={item[0]}>
-                        <div className="text-left"  onClick={e=>waitingfor(item[0], props)} style={{marginRight:'1rem'}}>
+                        <div className="text-left"  onClick={e=>waitingfor(item[0], props.context)} style={{marginRight:'1rem'}}>
                             <strong>{item[1]}</strong> <br/> <span style={{color:'red'}}>${item[4]-item[3]} under goal</span>                            
                         </div>
                     </Link>
@@ -27,7 +27,7 @@ function ListingArrayBase(props){
                     item = Object.values(item)
                     return(
                     <Link to='/search/detial' key={item[0]}>
-                        <div className="text-left"  onClick={e=>waitingfor(item[0], props)} style={{marginRight:'1rem'}}>
+                        <div className="text-left"  onClick={e=>waitingfor(item[0], props.context)} style={{marginRight:'1rem'}}>
                             <strong>{item[1]}</strong> <br/> ${item[2]}                            
                         </div>
                     </Link>
@@ -37,11 +37,12 @@ function ListingArrayBase(props){
         )
     }
 }
-const waitingfor = async(pk,props)=>{
-    console.log('GUUUUUUUUUUUR', props)
+//"SELECT * FROM coronavirusonly where column_a ="+`\'${pk}\'`
+export const waitingfor = async(pk,context)=>{
+    const sql = "SELECT * FROM coronavirusonly where column_a ="+`\'${pk}\'`
+    console.log('GUUUUUUUUUUUR')
     console.log('hello')
-    await props.firebase.getQueryData(pk)
-    props.showdata()
+    await context.getQueryData(sql)
 
 }
 const ListingArray = withFirebase(ListingArrayBase)

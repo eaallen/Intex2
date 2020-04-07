@@ -15,7 +15,7 @@ import { withFirebase } from './comps/Firebase';
 
 
 function AppBase(props) {
-  console.log('props.firebase.state.dataQuerySingle',props.firebase.state.dataQuerySingle)
+  console.log('props.firebase.state.dataQuerySingle',props.context.key)
   return (
     <div className="App">
     <Router>

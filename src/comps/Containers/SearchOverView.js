@@ -3,6 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 import { useRouteMatch} from "react-router-dom";
 function SearchOverView(props){
     let match = useRouteMatch("/search/overview/:title");
+    console.log(match)
     let title = match.params.title
     return(
     <div>

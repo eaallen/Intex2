@@ -4,10 +4,10 @@ import {Row, Col,Jumbotron,Container} from 'react-bootstrap';
 
 function Home(props) {
     return (
-        <div class="text-light bg-dark">
+        <div className="text-light bg-dark">
                         <Jumbotron className='text-center'>
-                <h1 class="text-dark">About Us</h1>
-                <p class="text-dark">
+                <h1 className="text-dark">About Us</h1>
+                <p className="text-dark">
                     this site is currently just for testing 
                 </p>
             </Jumbotron>

@@ -5,6 +5,7 @@ import axios from 'axios';
 import {withFirebase} from '../Firebase';
 import SearchLeft from './SearchLeft';
 import SearchOverView from './SearchOverView'
+import AppContext from '../context/AppContext'
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,51 +17,44 @@ class SearchBase extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            data: {},
-            key: null 
+
         }
     }
     async componentDidMount(){
         // this.props.firebase.getApiToken() returns api key from fireStore
-        this.setState({...this.state, key: await this.props.firebase.getApiToken()})
+        // this.setState({...this.state, key: props.context.key})
     }
 
     // calles a single record
-    async queryDW (){
-        console.log('we are in')
-        this.setState({...this.state, data: this.props.firebase.state.dataQuerySingle})
-    
-    }    
     render(){
-        const data = this.state.data
         return (
             <div className={this.props.className}>
-                {console.log('DATA----->',this.state.data)}
+                {console.log('DATA----->',  this.props.context.dataQuerySingle)}
                     <Row noGutters>
                         <Col md={3}>
-                            <SearchLeft key = {this.state.key} showdata={e=>this.queryDW()}/>
+                            <SearchLeft key = {this.state.key}/>
                         </Col>
                         
                         <Col md={9} >
                             
                                 <Switch>
                                     <Route path="/search/overview/:title">
-                                        <SearchOverView title={"Exceeded Goal"}/>
+                                        <SearchOverView/>
                                     </Route>
                                     <Route path='/search/detial'>
-                                        {this.state.data?
+                                        { this.props.context.dataQuerySingle?
                                             <div>
                                                 <br></br>
-                                                <a href={this.state.data.url}>
-                                                    <img className='detial-img'src={this.state.data.campaign_image_url}/>
+                                                <a href={  this.props.context.dataQuerySingle.url}>
+                                                    <img className='detial-img'src={  this.props.context.dataQuerySingle.campaign_image_url}/>
                                                 </a> 
-                                                <h3>{this.state.data.title}</h3>
+                                                <h3>{  this.props.context.dataQuerySingle.title}</h3>
                                             </div>
                                             :
                                             <></>
                                         }
                                                 
-                                        {this.state.data? <>{Object.entries(this.state.data).map(item=>{return(
+                                        {  this.props.context.dataQuerySingle? <>{Object.entries(  this.props.context.dataQuerySingle).map(item=>{return(
                                             <Row key={item[0]+'key'}>
                                                 <Col>{item[0]}</Col><Col>{item[1]}</Col>
                                             </Row>

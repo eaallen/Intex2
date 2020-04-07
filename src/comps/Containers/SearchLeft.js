@@ -7,6 +7,7 @@ import {withFirebase} from '../Firebase'
 import ListingArray from '../helpers/ListingArray'
 import MyAccordian from '../helpers/MyAccordian'
 import {Link} from 'react-router-dom'
+import CustomSearch from './CustomSearch'
 class SearchLeftBase extends React.Component{
     constructor(props){
         super(props)
@@ -15,25 +16,25 @@ class SearchLeftBase extends React.Component{
             worst: null,
             mostDonations: null,
             suspectedFraud: null,
-            key: null
+            
         }
     }
     async componentDidMount(){
         axios.defaults.headers.post['Content-Type'] = 'application/json';
-        axios.defaults.baseURL = 'https://api.data.world/v0/sql/eaallen/covid-19';
+        axios.defaults.baseURL = 'https://api.data.world/v0/sql/eaallen/cleancovid';
         axios.defaults.method= 'post'
         // this.props.firebase.getApiToken() returns api key from fireStore
-        this.setState({...this.state, key: await this.props.firebase.getApiToken()})
+        // this.setState({...this.state, key: await this.props.firebase.getApiToken()})
     }
     // calles a single record
     async queryBest (){
         console.log('click')
         const resp = await axios({
             data: {
-                query: "SELECT column_a, title,current_amount FROM covid19_campaigns where current_amount > goal ORDER BY current_amount DESC LIMIT 5",
+                query: "SELECT column_a, title,current_amount FROM coronavirusonly where current_amount > goal ORDER BY current_amount DESC LIMIT 5",
             },
             headers:{                
-                Authorization: this.state.key
+                Authorization: this.props.context.key
             }
         });
         console.log(resp.data)
@@ -42,8 +43,8 @@ class SearchLeftBase extends React.Component{
     }    
     async queryWorst (){
         console.log('click')
-        const sql = "SELECT column_a, title,current_amount FROM covid19_campaigns where current_amount < goal ORDER BY current_amount LIMIT 5"
-        const resp = await axios({data: {query: sql,},headers:{Authorization: this.state.key}});
+        const sql = "SELECT column_a, title,current_amount FROM coronavirusonly where current_amount < goal ORDER BY current_amount LIMIT 5"
+        const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
         console.log(resp.data)
         this.setState({...this.state, worst: resp.data})
 
@@ -51,8 +52,8 @@ class SearchLeftBase extends React.Component{
     async queryMost (){
         console.log('click')
         console.log('click')
-        const sql = "SELECT DISTINCT column_a, title,current_amount FROM covid19_campaigns where current_amount > goal ORDER BY days_active LIMIT 5"
-        const resp = await axios({data: {query: sql,},headers:{Authorization: this.state.key}});
+        const sql = "SELECT DISTINCT column_a, title,current_amount FROM coronavirusonly where current_amount > goal ORDER BY days_active LIMIT 5"
+        const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
         console.log(resp.data)
         this.setState({...this.state, mostDonations: resp.data})
 
@@ -60,8 +61,8 @@ class SearchLeftBase extends React.Component{
     async queryFraud (){
         console.log('click')
         console.log('click')
-        const sql = "SELECT  column_a, title, days_active, current_amount, goal FROM covid19_campaigns where deactivated = 'true' AND current_amount < goal ORDER By goal - current_amount desc LIMIT 5"
-        const resp = await axios({data: {query: sql,},headers:{Authorization: this.state.key}});
+        const sql = "SELECT  column_a, title, days_active, current_amount, goal FROM coronavirusonly where deactivated = 'true' AND current_amount < goal ORDER By goal - current_amount desc LIMIT 5"
+        const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
         console.log(resp.data)
         this.setState({...this.state, suspectedFraud: resp.data})
     }  
@@ -72,6 +73,22 @@ class SearchLeftBase extends React.Component{
         return (
             <div className={this.props.className}>
                 <Accordion className='text-left'>
+                    <Card>
+                    <Link to={'/search/overview/Exceeded Goal'}>
+                        <Card.Header>
+                        <Accordion.Toggle  as={Button} variant="link" eventKey="4" onClick={e=>{if(!this.state.best)this.queryBest()}}>
+                            Custom Search
+                            {console.log('the best',this.state.best)}
+                        </Accordion.Toggle>
+                        </Card.Header>
+                    </Link>
+                    <Accordion.Collapse eventKey="4">
+                        <Card.Body>                        
+                            <CustomSearch />
+                        </Card.Body>
+                    </Accordion.Collapse>
+
+                    </Card>
                     <Card>
                     <Link to={'/search/overview/Exceeded Goal'}>
                         <Card.Header>
