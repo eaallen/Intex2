@@ -30,11 +30,14 @@ export default function Analyze(props) {
                 </bs.Row><br></br>
                 <bs.Row>
                     <bs.Col>
-                        <PredictForm func={window.f1}/>
+                        <PredictForm func={'msg'}/>
                     </bs.Col>
                     <bs.Col>
-                        <div md='8'>Results</div>
+                        <div md='8'>Predicted Amount of Donators:</div>
                         <p id='msg'></p>
+                        
+                        <div md='8'>Predicted Amount Donations Recieved:</div>
+                        <p id="msg2"></p>
                     </bs.Col>
                 </bs.Row>
             </bs.Container>

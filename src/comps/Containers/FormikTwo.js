@@ -1,9 +1,8 @@
 import React from 'react'
 import * as bs from 'react-bootstrap'
 import { Formik, Form, Field} from 'formik'
-import Spinner from 'react-bootstrap/Spinner'
-import { Container, Row, Col, Button, Jumbotron} from 'react-bootstrap';
-import { withFirebase } from './Firebase';
+import { Button} from 'react-bootstrap';
+
 
 //this is a xommit test
 
@@ -29,7 +28,7 @@ const AnalysisController = props => {
             func={props.func}
             initialValues={{
                 category_id: '1',
-                goal_usd: '2000',
+                donators: '2000',
                 title: 'of orinthaw',
                 description: 'we thre keinf',
                 has_beneficiary: 'TRUE',
@@ -92,8 +91,7 @@ const handleSubmit = async(e,func,formData) =>{
     console.log('______>',formData)
     
 
-    document.getElementById('msg').innerHTML = ''
-    document.getElementById('msg2').innerHTML = ''
+    document.getElementById(func).innerHTML = '' 
 
     if(func==='msg'){
         await window.f1(formData)   

@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import { useHistory } from "react-router-dom";
-import PredictForm from '../Formik'
+import PredictForm from './FormikTwo'
 import * as bs from 'react-bootstrap'
 
 import {Row, Col,Navbar,DropdownButton,Dropdown,ButtonGroup, Nav } from 'react-bootstrap';
@@ -30,11 +30,11 @@ export default function Analyze2(props) {
                 </bs.Row><br></br>
                 <bs.Row>
                     <bs.Col>
-                        <PredictForm  func={window.f3()}/>
+                        <PredictForm  func={'msg2'}/>
                     </bs.Col>
                     <bs.Col>
                         <div md='8'>Results</div>
-                        <p id='msg'></p>
+                        <p id='msg2'></p>
                     </bs.Col>
                 </bs.Row>
             </bs.Container>
