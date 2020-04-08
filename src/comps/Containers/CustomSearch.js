@@ -8,14 +8,14 @@ import {Link} from 'react-router-dom'
 function CustomSearchBase(props){  
     console.log('click')
     return(
-        <Link to='/search/cust'><div onClick={e=>writeQuery(props)}>
+        <Link className="text-dark" to='/search/cust'><div onClick={e=>writeQuery(props)}>
             Best of category
         </div></Link>
     )
     
 }
 const writeQuery = async(props) =>{
-    const sql = "SELECT column_a, title,current_amount, social_share_total FROM coronavirusonly where current_amount < goal ORDER BY current_amount LIMIT 5"   
+    const sql = "SELECT column_a, title,current_amount, social_share_total FROM coronavirusonly where current_amount < goal ORDER BY current_amount"   
     await props.context.getQueryDataAll(sql)
 
 }

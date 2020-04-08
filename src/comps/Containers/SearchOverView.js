@@ -16,7 +16,7 @@ function SearchOverView(props){
                     </p>
                 </Col>
                 <Col xs={9}>
-                    iframe tablue here
+                    iframe tableau here
                 </Col>
             </Row>
         </Container>

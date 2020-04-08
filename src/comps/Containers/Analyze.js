@@ -10,14 +10,14 @@ export default function Analyze(props) {
     const [modalShow, setModalShow] = React.useState(false);
     return (
         <div>
-            <div className={props.className}>
+            <h1 className={props.className}>
                 Analyze 
-            </div><br />
+            </h1><br />
             <bs.Container>
                 <bs.Row>
                     <bs.Col md={.5}>
                     <>
-                        <bs.Button variant="primary" onClick={() => setModalShow(true)}>
+                        <bs.Button variant="dark" onClick={() => setModalShow(true)}>
                         About Analyze
                         </bs.Button>
   
@@ -33,8 +33,16 @@ export default function Analyze(props) {
                         <PredictForm />
                     </bs.Col>
                     <bs.Col>
-                        <div md='8'>Results</div>
-                        <p id='msg'></p>
+                        <h3>Results here</h3>
+                        <div>
+                            *Predicted number of donors*
+                        </div>
+                        <div>
+                            *Predicted total donation amount* 
+                        </div>
+                        <div>
+                            *Predicted amount per donation* 
+                        </div>
                     </bs.Col>
                 </bs.Row>
             </bs.Container>
@@ -52,7 +60,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <bs.Modal.Header closeButton>
           <bs.Modal.Title id="contained-modal-title-vcenter">
-            About Analyze
+            About the Analyze function
           </bs.Modal.Title>
         </bs.Modal.Header>
         <bs.Modal.Body>
@@ -61,7 +69,7 @@ function MyVerticallyCenteredModal(props) {
           </p>
         </bs.Modal.Body>
         <bs.Modal.Footer>
-          <bs.Button onClick={props.onHide}>Close</bs.Button>
+          <bs.Button variant="dark" onClick={props.onHide}>Close</bs.Button>
         </bs.Modal.Footer>
       </bs.Modal>
     );
