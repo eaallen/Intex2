@@ -15,7 +15,7 @@ export default function Analyze(props) {
             </h1><br />
             <bs.Container>
                 <bs.Row>
-                    <bs.Col md={.5}>
+                    <bs.Col md={.5} >
                     <>
                         <bs.Button variant="dark" onClick={() => setModalShow(true)}>
                         About Analyze
