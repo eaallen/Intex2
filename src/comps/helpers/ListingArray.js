@@ -10,7 +10,7 @@ function ListingArrayBase(props){
                 {props.array.map(item=>{
                     item = Object.values(item)
                     return(
-                    <Link to='/search/detial' key={item[0]}>
+                    <Link className="text-dark" to='/search/detail' key={item[0]}>
                         <div className="text-left"  onClick={e=>waitingfor(item[0], props.context)} style={{marginRight:'1rem'}}>
                             <strong>{item[1]}</strong> <br/> <span style={{color:'red'}}>${item[4]-item[3]} under goal</span>                            
                         </div>
@@ -26,11 +26,14 @@ function ListingArrayBase(props){
                 {props.array.map(item=>{
                     item = Object.values(item)
                     return(
-                    <Link to='/search/detial' key={item[0]}>
-                        <div className="text-left"  onClick={e=>waitingfor(item[0], props.context)} style={{marginRight:'1rem'}}>
-                            <strong>{item[1]}</strong> <br/> ${item[2]}                            
-                        </div>
-                    </Link>
+                        <Link className="text-dark" to={`/search/detail`} key={item[0]}>
+                            <div className="text-left"  onClick={e=>waitingfor(item[0], props.context)} style={{marginRight:'1rem'}}>
+                                <strong>{item[1]}</strong> <br/>                             
+                            </div>
+                            <div className="text-success">
+                                ${item[2]}
+                            </div>
+                        </Link>
                 )})}
             </ul>
 
