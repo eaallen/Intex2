@@ -1,0 +1,36 @@
+
+{
+  "Inputs": {
+    "input1": {
+      "ColumnNames": [
+        "category_id",
+        "goal_usd",
+        "donators",
+        "title",
+        "description",
+        "has_beneficiary",
+        "visible_in_search"
+      ],
+      "Values": [
+        [
+          "7",
+          "15000",
+          "0",
+          "covid-19",
+          "Handy for turning encoded JavaScript URLs from complete gibberish into readable gibberish.",
+          "TRUE",
+          "TRUE"
+        ]
+      ]
+    }
+  },
+  "GlobalParameters": {}
+}
+
+%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22goal_usd%22%2C%22donators%22%2C%22title%22%2C%22description%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%227%22%2C%2215000%22%2C%220%22%2C%22covid-19%22%2C%22Handy%20for%20turning%20encoded%20JavaScript%20URLs%20from%20complete%20gibberish%20into%20readable%20gibberish.%22%2C%22TRUE%22%2C%22TRUE%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D
+
+https://ussouthcentral.services.azureml.net/workspaces/744845da5bcc465a8c62345386ed0ae7/services/fd383fb9bf3e477986efd2d18d962466/execute?api-version=2.0&details=true
+
+
+CORS2
+https://script.google.com/macros/s/AKfycbx5Y9zP-MsL55v2MdzrRrYh09n9T70BzNBw-yRM4SpaUWaiZMg8/exec

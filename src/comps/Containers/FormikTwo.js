@@ -1,9 +1,8 @@
 import React from 'react'
 import * as bs from 'react-bootstrap'
 import { Formik, Form, Field} from 'formik'
-import Spinner from 'react-bootstrap/Spinner'
-import { Container, Row, Col, Button, Jumbotron} from 'react-bootstrap';
-import { withFirebase } from './Firebase';
+import { Button} from 'react-bootstrap';
+
 
 //this is a xommit test
 
@@ -11,14 +10,11 @@ function PredictForm(props) {
     console.log('!!!!!!!!',props)
     return (
         <div>        
-
             <AnalysisController func={props.func} /><br />
             Summarized Results<br />
-
-            
             show one or the other<br/>
-            <Button variant="success">Yes</Button>
-            <Button variant="danger">No</Button>
+            <Button variant="success">Good</Button><br />
+            <Button variant="danger">Bad</Button>
         </div>
     )
 }
@@ -29,17 +25,15 @@ const AnalysisController = props => {
     const [getError, setError] = React.useState(null)
     return (
         <Formik
-
             func={props.func}
             initialValues={{
                 category_id: '1',
-                goal_usd: '2000',
+                donators: '2000',
                 title: 'of orinthaw',
                 description: 'we thre keinf',
                 has_beneficiary: 'TRUE',
                 visible_in_search: 'TRUE',
             }}
-
             validateOnChange={false}
             validateOnBlur={false}
             validate={values => {
@@ -80,7 +74,6 @@ const AnalysisController = props => {
     )
 }
 
-
 const InputForm = props => (    
     <Form>        
         <First title="Input 1:" name="category_id" type="text" />
@@ -90,7 +83,6 @@ const InputForm = props => (
         <Option title="Input 5:" name="has_beneficiary" type="text" />
         <Option Input title="Input 6:" name="visible_in_search" type="dropdown" />
         <bs.Button type='submit' onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
-
     </Form>    
 )
 
@@ -99,8 +91,7 @@ const handleSubmit = async(e,func,formData) =>{
     console.log('______>',formData)
     
 
-    document.getElementById('msg').innerHTML = ''
-    document.getElementById('msg2').innerHTML = ''
+    document.getElementById(func).innerHTML = '' 
 
     if(func==='msg'){
         await window.f1(formData)   

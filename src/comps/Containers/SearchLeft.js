@@ -73,17 +73,14 @@ class SearchLeftBase extends React.Component{
         return (
             
             <div className={this.props.className}>
-                <h1>Search</h1>
                 <Accordion className='text-left'>
                     <Card>
-                    <Link to={'/search/overview/Exceeded Goal'}>
                         <Card.Header>
                         <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="4">
-                            Custom Search
+                            Explore Data
                             {console.log('the best',this.state.best)}
                         </Accordion.Toggle>
                         </Card.Header>
-                    </Link>
                     <Accordion.Collapse eventKey="4">
                         <Card.Body>                        
                             <CustomSearch />

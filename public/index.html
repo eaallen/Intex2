@@ -25,16 +25,45 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <script>
-      async function f1(yes){
-          var tag = document.createElement("script");
-          tag.src =`https://script.google.com/macros/s/AKfycbw08TPyq7h_ZfGfN21TUzwjjYJdp_cxlvQJ08BUM3MiP7t5CzZy/exec?data=%7B%20%22Inputs%22%3A%20%7B%20%22input1%22%3A%20%7B%20%22ColumnNames%22%3A%20%5B%20%22Marital%20Status%22%2C%20%22Gender%22%2C%20%22Income%22%2C%20%22Children%22%2C%20%22Cars%22%2C%20%22Age%22%2C%20%22Education%22%2C%20%22Occupation%22%2C%20%22Home%20Owner%22%2C%20%22Commute%20Distance%22%2C%20%22Region%22%20%5D%2C%20%22Values%22%3A%20%5B%20%5B%20%22Married%22%2C%20%22Male%22%2C%20%2210000%22%2C%20%220%22%2C%20%222%22%2C%20%2218%22%2C%20%22graduate%22%2C%20%22managment%22%2C%20%22${yes}%22%2C%20%220-1%20miles%22%2C%20%22Europe%22%20%5D%20%5D%20%7D%20%7D%2C%20%22GlobalParameters%22%3A%20%7B%7D%7D`;
+      var id
+      var goal
+      var title
+      var description
+      var has_ben
+      var search
+      var tag 
+      async function f1(data){
+        console.log('F1',data[1])
+        id = data[0]
+        goal = data[1]
+        title = data[2]
+        description = data[3]
+        has_ben = data[4]
+        search = data[5]
+        tag = document.createElement("script");
+       console.log(`https://script.google.com/macros/s/AKfycbw08TPyq7h_ZfGfN21TUzwjjYJdp_cxlvQJ08BUM3MiP7t5CzZy/exec?data=%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22goal_usd%22%2C%22donators%22%2C%22title%22%2C%22description%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%22${data[0]}%22%2C${goal}22%2C%220%22%2C%22${title}%22%2C%22${description}%22%2C%22${has_ben}%22%2C%22${search}%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D`)
+          tag.src =`https://script.google.com/macros/s/AKfycbw08TPyq7h_ZfGfN21TUzwjjYJdp_cxlvQJ08BUM3MiP7t5CzZy/exec?data=%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22goal_usd%22%2C%22donators%22%2C%22title%22%2C%22description%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%22${data[0]}%22%2C%22${goal}%22%2C%220%22%2C%22${title}%22%2C%22${description}%22%2C%22${has_ben}%22%2C%22${search}%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D`;
+          //                                                                                                              %7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22goal_usd%22%2C%22donators%22%2C%22title%22%2C%22description%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%227%22%2C%2215000%22%2C%220%22%2C%22covid-19%22%2C%22Handy%20for%20turning%20encoded%20JavaScript%20URLs%20from%20complete%20gibberish%20into%20readable%20gibberish.%22%2C%22TRUE%22%2C%22TRUE%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D
           document.getElementsByTagName("head")[0].appendChild(tag);
       }
       function f2(data){
-          console.log('resutls',data.Results.output1.value.Values[0])
-          document.getElementById('msg').innerHTML = data.Results.output1.value.Values[0]
+        // console.log('resutls',data[0].Results.output1.value.Values[0])
+        console.log('resutls',search)
+          document.getElementById('msg').innerHTML = Math.round(data.Results.output1.value.Values[0])
+          f3(id,Math.round(data.Results.output1.value.Values[0]),title,has_ben,search )
 
       }
+      async function f3(category_id, donators, title, has_beneficiary, visible_in_search){
+          var tag = document.createElement("script");
+          tag.src =`https://script.google.com/macros/s/AKfycbx5Y9zP-MsL55v2MdzrRrYh09n9T70BzNBw-yRM4SpaUWaiZMg8/exec?data=%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22curr_amount_usd%22%2C%22donators%22%2C%22title%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%22${category_id}%22%2C%220%22%2C%22${donators}%22%2C%22${title}%22%2C%22${has_beneficiary}%22%2C%22${visible_in_search}%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D`;
+          document.getElementsByTagName("body")[0].appendChild(tag);
+      }
+      function f4(data){
+          console.log('resutls',data.Results.output1.value.Values[0])
+          document.getElementById('msg2').innerHTML = data.Results.output1.value.Values[0]
+
+      }
+
 
     </script>
 

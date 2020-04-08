@@ -1,23 +1,23 @@
 import React,{useContext} from 'react';
 import { useHistory } from "react-router-dom";
-import PredictForm from '../Formik'
+import PredictForm from './FormikTwo'
 import * as bs from 'react-bootstrap'
 
 import {Row, Col,Navbar,DropdownButton,Dropdown,ButtonGroup, Nav } from 'react-bootstrap';
 import { Formik } from 'formik';
 
-export default function Analyze(props) {
+export default function Analyze2(props) {
     const [modalShow, setModalShow] = React.useState(false);
     return (
         <div>
-            <h1 className={props.className}>
+            <div className={props.className}>
                 Analyze 
-            </h1><br />
+            </div><br />
             <bs.Container>
                 <bs.Row>
                     <bs.Col md={.5}>
                     <>
-                        <bs.Button variant="dark" onClick={() => setModalShow(true)}>
+                        <bs.Button variant="primary" onClick={() => setModalShow(true)}>
                         About Analyze
                         </bs.Button>
   
@@ -30,18 +30,11 @@ export default function Analyze(props) {
                 </bs.Row><br></br>
                 <bs.Row>
                     <bs.Col>
-                        <PredictForm func={'msg'}/>
+                        <PredictForm  func={'msg2'}/>
                     </bs.Col>
                     <bs.Col>
-
-                        <div md='8'>Predicted Amount of Donators:</div>
-                        <p id='msg'></p>
-                        
-                        <div md='8'>Predicted Amount Donations Recieved:</div>
-                        <p id="msg2"></p>
-
-           
-
+                        <div md='8'>Results</div>
+                        <p id='msg2'></p>
                     </bs.Col>
                 </bs.Row>
             </bs.Container>
@@ -59,7 +52,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <bs.Modal.Header closeButton>
           <bs.Modal.Title id="contained-modal-title-vcenter">
-            About the Analyze function
+            About Analyze
           </bs.Modal.Title>
         </bs.Modal.Header>
         <bs.Modal.Body>
@@ -68,7 +61,7 @@ function MyVerticallyCenteredModal(props) {
           </p>
         </bs.Modal.Body>
         <bs.Modal.Footer>
-          <bs.Button variant="dark" onClick={props.onHide}>Close</bs.Button>
+          <bs.Button onClick={props.onHide}>Close</bs.Button>
         </bs.Modal.Footer>
       </bs.Modal>
     );
