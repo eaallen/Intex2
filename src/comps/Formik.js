@@ -3,14 +3,15 @@ import * as bs from 'react-bootstrap'
 import { Formik, Form, Field} from 'formik'
 import Spinner from 'react-bootstrap/Spinner'
 import { Container, Row, Col, Button, Jumbotron} from 'react-bootstrap';
+import { withFirebase } from './Firebase';
 
 //this is a xommit test
 
 function PredictForm(props) {
-    
+    console.log('!!!!!!!!',props)
     return (
         <div>        
-            <AnalysisController /><br />
+            <AnalysisController func={props.func} /><br />
             Summarized Results<br />
             show one or the other<br/>
             <Button variant="success">Good</Button><br />
@@ -18,13 +19,14 @@ function PredictForm(props) {
         </div>
     )
 }
-export default PredictForm
+export default withFirebase(PredictForm)
 
 
 const AnalysisController = props => {
     const [getError, setError] = React.useState(null)
     return (
         <Formik
+            func={props.func}
             initialValues={{
                 input1: 'first',
                 input2: 'second',
@@ -74,21 +76,23 @@ const AnalysisController = props => {
 }
 
 const InputForm = props => (
+    
     <Form>
+        
         <Input title="Input 1:" name="input1" type="text" />
         <Input title="Input 2:" name="input2" type="text" />
         <Input title="Input 3:" name="input3" type="text" />
         <Input title="Input 4:" name="input4" type="text" />
         <Input title="Input 5:" name="input5" type="text" />
         <Input title="Input 6:" name="input6" type="text" />
-        <bs.Button type='submit' onClick={e=>handleSubmit(e, 'yes')}>Predict</bs.Button>
+<bs.Button type='submit' onClick={e=>handleSubmit(e)}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
     </Form>    
 )
 
-const handleSubmit = async(e, yes) =>{
+const handleSubmit = async(e) =>{
     e.preventDefault()
     document.getElementById('msg').innerHTML = ''
-    await window.f1(yes)
+    await window.f1()
 }
 
 const Input = (props) => (

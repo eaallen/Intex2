@@ -30,6 +30,8 @@ export const AppContext = React.createContext()
             dataQuerySingle: {},
             key: null,
             dataQueryAll: null,
+            f1:window.f1,
+            f3:window.f3,
           }
           
           app.initializeApp(config);

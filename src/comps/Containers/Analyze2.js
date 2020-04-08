@@ -6,7 +6,7 @@ import * as bs from 'react-bootstrap'
 import {Row, Col,Navbar,DropdownButton,Dropdown,ButtonGroup, Nav } from 'react-bootstrap';
 import { Formik } from 'formik';
 
-export default function Analyze(props) {
+export default function Analyze2(props) {
     const [modalShow, setModalShow] = React.useState(false);
     return (
         <div>
@@ -30,7 +30,7 @@ export default function Analyze(props) {
                 </bs.Row><br></br>
                 <bs.Row>
                     <bs.Col>
-                        <PredictForm func={window.f1}/>
+                        <PredictForm  func={window.f3()}/>
                     </bs.Col>
                     <bs.Col>
                         <div md='8'>Results</div>
