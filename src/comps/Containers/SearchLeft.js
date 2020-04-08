@@ -71,12 +71,14 @@ class SearchLeftBase extends React.Component{
     }  
     render(){
         return (
+            
             <div className={this.props.className}>
+                <h1>Search</h1>
                 <Accordion className='text-left'>
                     <Card>
                     <Link to={'/search/overview/Exceeded Goal'}>
                         <Card.Header>
-                        <Accordion.Toggle  as={Button} variant="link" eventKey="4">
+                        <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="4">
                             Custom Search
                             {console.log('the best',this.state.best)}
                         </Accordion.Toggle>
@@ -92,7 +94,7 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/Exceeded Goal'}>
                         <Card.Header>
-                        <Accordion.Toggle  as={Button} variant="link" eventKey="0" onClick={e=>{if(!this.state.best)this.queryBest()}}>
+                        <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="0" onClick={e=>{if(!this.state.best)this.queryBest()}}>
                             Best
                             {console.log('the best',this.state.best)}
                         </Accordion.Toggle>
@@ -112,7 +114,7 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/In Need of Help'}>
                     <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="1" onClick={e=>{if(!this.state.worst)this.queryWorst()}}>
+                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="1" onClick={e=>{if(!this.state.worst)this.queryWorst()}}>
                         In Need of Help
                     </Accordion.Toggle>
                     </Card.Header>
@@ -131,7 +133,7 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/Fastest to Success'}>
                     <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="2" onClick={e=>{if(!this.state.mostDonations)this.queryMost()}}>
+                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="2" onClick={e=>{if(!this.state.mostDonations)this.queryMost()}}>
                         Fastest to Success 
                     </Accordion.Toggle>
                     </Card.Header>
@@ -149,7 +151,7 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/Failed Attempts'}>
                     <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="3" onClick={e=>{if(!this.state.suspectedFraud)this.queryFraud()}}>
+                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="3" onClick={e=>{if(!this.state.suspectedFraud)this.queryFraud()}}>
                         Failed Attempts 
                     </Accordion.Toggle>
                     </Card.Header>

@@ -30,12 +30,12 @@
 .acordian{
   padding: 0px;
 }
-.detial-img{
+.detail-img{
   height: 300px;
   width: 300px;
   border-radius: 3%;
 }
-.detial-img :hover{
+.detail-img :hover{
   height: 300px;
   width: 300px;
   border-radius: 3%;

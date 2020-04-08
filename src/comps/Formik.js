@@ -11,10 +11,10 @@ function PredictForm(props) {
     return (
         <div>        
             <AnalysisController /><br />
-            Summarized Results<br />
+            Will you reach your goal?<br />
             show one or the other<br/>
-            <Button variant="success">Good</Button><br />
-            <Button variant="danger">Bad</Button>
+            <Button variant="success">Yes</Button>
+            <Button variant="danger">No</Button>
         </div>
     )
 }
@@ -25,14 +25,14 @@ const AnalysisController = props => {
     const [getError, setError] = React.useState(null)
     return (
         <Formik
-            initialValues={{
-                input1: 'first',
-                input2: 'second',
-                input3: 'third',
-                input4: 'fourth',
-                input5: 'fifth',
-                input6: 'sixth',
-            }}
+            // initialValues={{
+            //     input1: 'first',
+            //     input2: 'second',
+            //     input3: 'third',
+            //     input4: 'fourth',
+            //     input5: 'fifth',
+            //     input6: 'sixth',
+            // }}
             validateOnChange={false}
             validateOnBlur={false}
             validate={values => {
@@ -81,7 +81,7 @@ const InputForm = props => (
         <Input title="Input 4:" name="input4" type="text" />
         <Input title="Input 5:" name="input5" type="text" />
         <Input title="Input 6:" name="input6" type="text" />
-        <bs.Button type='submit' onClick={e=>handleSubmit(e, 'yes')}>Predict</bs.Button>
+        <bs.Button type='submit' variant="dark" onClick={e=>handleSubmit(e, 'yes')}>Analyze</bs.Button>
     </Form>    
 )
 

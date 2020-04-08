@@ -42,12 +42,12 @@ class SearchBase extends React.Component{
                                     <Route path="/search/overview/:title">
                                         <SearchOverView/>
                                     </Route>
-                                    <Route path='/search/detial'>
+                                    <Route path='/search/detail'>
                                         { this.props.context.dataQuerySingle?
                                             <div>
                                                 <br></br>
                                                 <a href={  this.props.context.dataQuerySingle.url}>
-                                                    <img className='detial-img'src={  this.props.context.dataQuerySingle.campaign_image_url}/>
+                                                    <img className='detail-img'src={  this.props.context.dataQuerySingle.campaign_image_url}/>
                                                 </a> 
                                                 <h3>{  this.props.context.dataQuerySingle.title}</h3>
                                             </div>
@@ -55,7 +55,7 @@ class SearchBase extends React.Component{
                                             <></>
                                         }
                                                 
-                                        {  this.props.context.dataQuerySingle? <>{Object.entries(  this.props.context.dataQuerySingle).map(item=>{return(
+                                        {  this.props.context.dataQuerySingle? <>{Object.entries(this.props.context.dataQuerySingle).map(item=>{return(
                                             <Row key={item[0]+'key'}>
                                                 <Col>{item[0]}</Col><Col>{item[1]}</Col>
                                             </Row>
