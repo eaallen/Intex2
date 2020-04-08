@@ -6,6 +6,7 @@ import Top from './comps/Containers/Top'
 import Home from './comps/Containers/Home'
 import Search from './comps/Containers/Search'
 import Analyze from './comps/Containers/Analyze'
+import Analyze2 from './comps/Containers/Analyze2'
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,6 +40,9 @@ function AppBase(props) {
                   </Route>
                   <Route path="/Analyze">
                     <Analyze />
+                  </Route>
+                  <Route path="/Analyze2">
+                    <Analyze2 />
                   </Route>
                   <Route path="/" key='filter' >
                     <Home className="bg-warning"/>
