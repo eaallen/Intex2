@@ -65,11 +65,8 @@ class SearchBase extends React.Component{
                                         {console.log('this.props.context.dataQueryAll',this.props.context.dataQueryAll)}                                               
                                         { this.props.context.dataQueryAll?
                                          
-                                        <><QueryTable/>{this.props.context.dataQueryAll.map((item, key)=>{return(
-                                            <Row key={key} className="text-left">
-                                                <Col>{item.title}</Col><Col>{item.current_amount}</Col>{item.current_amount}<Col></Col><Col>item.current_amount</Col>
-                                            </Row>
-                                        )})}</>:
+                                        <QueryTable/>
+                                        :
                                         <></>}
                                     </Route>
                                 </Switch>

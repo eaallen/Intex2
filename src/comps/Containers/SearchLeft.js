@@ -76,7 +76,7 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/Exceeded Goal'}>
                         <Card.Header>
-                        <Accordion.Toggle  as={Button} variant="link" eventKey="4" onClick={e=>{if(!this.state.best)this.queryBest()}}>
+                        <Accordion.Toggle  as={Button} variant="link" eventKey="4">
                             Custom Search
                             {console.log('the best',this.state.best)}
                         </Accordion.Toggle>
