@@ -11,12 +11,12 @@ function Top(props) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Link className="text-white" to="/home" >Home</Link>
-                    <Link className="text-white" to="/search">Search</Link>
-                    <Link className="text-white" to="/analyze">Analyze</Link>
+                    <Link className="text-white" to="/home" >Home</Link><span>&nbsp;&nbsp;</span>
+                    <Link className="text-white" to="/search">Search</Link><span>&nbsp;&nbsp;</span>
+                    <Link className="text-white" to="/analyze">Analyze</Link><span>&nbsp;&nbsp;</span>
                 </Nav>
                 <bs.Form inline>
-                    <bs.FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    {/* <bs.FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
                     <bs.Button variant="outline-light">Sign in</bs.Button>
                 </bs.Form>
             </Navbar.Collapse>
