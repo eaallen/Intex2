@@ -89,7 +89,7 @@ const InputForm = props => (
         <Input title="Input 4:" name="description" type="text" />
         <Option title="Input 5:" name="has_beneficiary" type="text" />
         <Option Input title="Input 6:" name="visible_in_search" type="dropdown" />
-        <bs.Button type='submit' onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
+        <bs.Button type='submit' variant="dark" onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
 
     </Form>    
 )

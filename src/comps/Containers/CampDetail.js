@@ -3,7 +3,7 @@ import {Row,Col} from 'react-bootstrap'
 import {withFirebase} from '../Firebase'
 import { useRouteMatch} from "react-router-dom";
 
-function CampDetialBase(props){
+function CampdetailBase(props){
     const info = props.context.dataQuerySingle
     if(props.context.loading){
         return(
@@ -35,5 +35,5 @@ function CampDetialBase(props){
 // }
 
 
-const CampDetail = withFirebase(CampDetialBase)
+const CampDetail = withFirebase(CampdetailBase)
 export default CampDetail

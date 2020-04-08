@@ -12,7 +12,7 @@ function Top(props) {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <Link className="text-white" to="/home" >Home</Link><span>&nbsp;&nbsp;</span>
-                    <Link className="text-white" to="/search">Search</Link><span>&nbsp;&nbsp;</span>
+                    <Link className="text-white" to="/search/overview/Overall">Search</Link><span>&nbsp;&nbsp;</span>
                     <Link className="text-white" to="/analyze">Analyze</Link><span>&nbsp;&nbsp;</span>
                 </Nav>
                 <bs.Form inline>

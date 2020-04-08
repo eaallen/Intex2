@@ -12,7 +12,7 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
-import CampDetial from './CampDetail'
+import Campdetail from './CampDetail'
 import FullQuery from './FullQuery'
   
 class SearchBase extends React.Component{
@@ -27,8 +27,9 @@ class SearchBase extends React.Component{
         // this.setState({...this.state, key: props.context.key})
     }
 
-    // calles a single record
+    // calls a single record
     render(){
+        let src='https://public.tableau.com/views/INTEX/Overall?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'
         return (
             <div className={this.props.className}>
                 <FullQuery
@@ -47,7 +48,7 @@ class SearchBase extends React.Component{
                                         <SearchOverView/>
                                     </Route>
                                     <Route path='/search/detail'>
-                                        <CampDetial/>
+                                        <Campdetail/>
                                     </Route>
                                     <Route path='/search/cust/:title'> 
                                         { this.props.context.dataQueryAll?
@@ -56,15 +57,11 @@ class SearchBase extends React.Component{
                                         :
                                         <></>}
                                     </Route>
-                                </Switch>
-                           
+                                </Switch>                           
                         </Col>
                     </Row>    
-                  
             </div>
       );
-    
-
     }
 }
 const Search = withFirebase(SearchBase)
