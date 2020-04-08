@@ -12,7 +12,8 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
-
+import CampDetial from './CampDetail'
+import FullQuery from './FullQuery'
   
 class SearchBase extends React.Component{
     constructor(props){
@@ -30,39 +31,25 @@ class SearchBase extends React.Component{
     render(){
         return (
             <div className={this.props.className}>
-                {console.log('DATA----->',  this.props.context.dataQuerySingle)}
+                <FullQuery
+                    show={this.props.context.showModal}
+                    onHide={() => this.props.context.setModal()}
+                />
                     <Row noGutters>
-                        <Col md={3}>
+                        <Col md={2}>
                             <SearchLeft key = {this.state.key}/>
                         </Col>
                         
-                        <Col md={9} >
+                        <Col md={10} >
                             
                                 <Switch>
                                     <Route path="/search/overview/:title">
                                         <SearchOverView/>
                                     </Route>
                                     <Route path='/search/detail'>
-                                        { this.props.context.dataQuerySingle?
-                                            <div>
-                                                <br></br>
-                                                <a href={  this.props.context.dataQuerySingle.url}>
-                                                    <img className='detail-img'src={  this.props.context.dataQuerySingle.campaign_image_url}/>
-                                                </a> 
-                                                <h3>{  this.props.context.dataQuerySingle.title}</h3>
-                                            </div>
-                                            :
-                                            <></>
-                                        }
-                                                
-                                        {  this.props.context.dataQuerySingle? <>{Object.entries(this.props.context.dataQuerySingle).map(item=>{return(
-                                            <Row key={item[0]+'key'}>
-                                                <Col>{item[0]}</Col><Col>{item[1]}</Col>
-                                            </Row>
-                                        )})}</>:<></>}
+                                        <CampDetial/>
                                     </Route>
-                                    <Route path='/search/cust'> 
-                                        {console.log('this.props.context.dataQueryAll',this.props.context.dataQueryAll)}                                               
+                                    <Route path='/search/cust/:title'> 
                                         { this.props.context.dataQueryAll?
                                          
                                         <QueryTable/>

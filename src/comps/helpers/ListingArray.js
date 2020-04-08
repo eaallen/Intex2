@@ -10,8 +10,8 @@ function ListingArrayBase(props){
                 {props.array.map(item=>{
                     item = Object.values(item)
                     return(
-                    <Link className="text-dark" to='/search/detail' key={item[0]}>
-                        <div className="text-left"  onClick={e=>waitingfor(item[0], props.context)} style={{marginRight:'1rem'}}>
+                    <Link className="text-dark" to={`/search/detail`} key={item[0]}>
+                        <div className="text-left"  style={{marginRight:'1rem'}} onClick={e=>writeQuery(props, item[0])}>
                             <strong>{item[1]}</strong> <br/> <span style={{color:'red'}}>${item[4]-item[3]} under goal</span>                            
                         </div>
                     </Link>
@@ -26,8 +26,8 @@ function ListingArrayBase(props){
                 {props.array.map(item=>{
                     item = Object.values(item)
                     return(
-                        <Link className="text-dark" to={`/search/detail`} key={item[0]}>
-                            <div className="text-left"  onClick={e=>waitingfor(item[0], props.context)} style={{marginRight:'1rem'}}>
+                        <Link className="text-dark" to={`/search/detail`} key={item[0]+'yeh'}>
+                            <div className="text-left" style={{marginRight:'1rem'}} onClick={e=>writeQuery(props,item[0])}>
                                 <strong>{item[1]}</strong> <br/>                             
                             </div>
                             <div className="text-success">
@@ -40,13 +40,11 @@ function ListingArrayBase(props){
         )
     }
 }
-//"SELECT * FROM coronavirusonly where column_a ="+`\'${pk}\'`
-export const waitingfor = async(pk,context)=>{
-    const sql = "SELECT * FROM coronavirusonly where column_a ="+`\'${pk}\'`
-    console.log('GUUUUUUUUUUUR')
-    console.log('hello')
-    await context.getQueryData(sql)
-
+const writeQuery = async(props,id) =>{
+    const sql = `SELECT * FROM coronavirusonly where column_a =${id}`
+    props.context.loader()
+    await props.context.getQueryData(sql)
 }
+
 const ListingArray = withFirebase(ListingArrayBase)
 export default ListingArray
