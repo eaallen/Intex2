@@ -25,6 +25,9 @@ export const AppContext = React.createContext()
             getApiToken: this.getApiToken,
             getQueryData: this.getQueryData,
             getQueryDataAll: this.getQueryDataAll,
+            setModal: this.setModal,
+            getDataFromTextArea: this.getDataFromTextArea,
+            loader: this.loader,
           }
           this.state = {
             dataQuerySingle: {},
@@ -34,6 +37,9 @@ export const AppContext = React.createContext()
             f3:window.f3,
             dom1: document.getElementById('msg'),
             dom2: document.getElementById('msg2'),
+            showModal: false,
+            sql: "SELECT * FROM coronavirusonly LIMIT 10",
+            loading: null
           }
           
           app.initializeApp(config);
@@ -92,17 +98,40 @@ export const AppContext = React.createContext()
         //=======================================================================
         //                    QUERY DATA.WORLD FUNCTIONS
         //=======================================================================
+        getDataFromTextArea=(e)=>{
+          this.setState({...this.state, sql:e.target.value})
+        }
+        setModal=()=>{
+          if(this.state.showModal){
+            this.setState({...this.state, showModal:false})
+          }else{
+            this.setState({...this.state, showModal:true})
+          }
+        }
         getQueryData = async(sql) =>{
-          const resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
+          let resp = null          
+          resp = await axios({data: {query: sql,},headers:{Authorization:await this.getApiToken()}});
           console.log('RESP.DATA____>',resp.data[0])
-          this.setState({...this.state, dataQuerySingle:resp.data[0]})
-          // this.state.dataQuerySingle= resp.data[0]
+          // this.setState({...this.state, dataQuerySingle:resp.data[0]})
+          this.setState(state=> produce(state, draft=>{
+            console.log('()()()()',resp.data[0])
+            draft.dataQuerySingle = resp.data[0]
+            draft.loading = false
+        }))
+        
+
       }
         getQueryDataAll = async(sql) =>{
-            const resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
+            let resp = null
+            
+            resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
             console.log('RESP.DATA____>',resp.data)
-            this.setState({...this.state, dataQueryAll:resp.data})
+            this.setState({...this.state, dataQueryAll:resp.data, loading:false})
+            
             // this.state.dataQuerySingle= resp.data[0]
+        }
+        loader=()=>{          
+          this.setState({...this.state, loading:true})
         }
       async componentDidMount(){
           axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -114,6 +143,7 @@ export const AppContext = React.createContext()
           this.setState({...this.state, key: await this.getApiToken()})
         }
         render(){
+          console.log('LOADING', this.state.loading)
           if(!this.state.key){
             return(
                 <>
