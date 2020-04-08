@@ -34,3 +34,55 @@ https://ussouthcentral.services.azureml.net/workspaces/744845da5bcc465a8c6234538
 
 CORS2
 https://script.google.com/macros/s/AKfycbx5Y9zP-MsL55v2MdzrRrYh09n9T70BzNBw-yRM4SpaUWaiZMg8/exec
+%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22curr_amount_usd%22%2C%22donators%22%2C%22title%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%220%22%2C%220%22%2C%220%22%2C%22value%22%2C%220%22%2C%220%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D
+
+
+tag.src =`https://script.google.com/macros/s/AKfycbw08TPyq7h_ZfGfN21TUzwjjYJdp_cxlvQJ08BUM3MiP7t5CzZy/exec?data=%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22goal_usd%22%2C%22donators%22%2C%22title%22%2C%22description%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%22${data[0]}%22%2C%${data[1]}%22%2C%220%22%2C%22${data[2]}%22%2C%22${data[3]}%22%2C%${data[4]}%22%2C%22${data[5]}%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D`
+
+1	Accidents & Emergencies
+2	Animals & Pets
+3	Babies Kids & Family
+4	Business & Entrepreneurs
+5	Celebrations & Events
+6	Community & Neighbors
+7	Creative Arts Music & Film
+8	Dreams Hopes & Wishes
+9	Education & Learning
+10	Funerals & Memorials
+11	Medical Illness & Healing
+12	Missions Faith & Church
+13	Other
+14	Sports Teams & Clubs
+15	Travel & Adventure
+16	Volunteer & Service
+17	Weddings & Honeymoons
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+API KEY 
+
+7JA2yAfzN+AwpmIlCiOTukPG34UpZvftwreU1w7BalxsGKLLUbFuWEr2xIVBW6wmUFqH/gTzUG4qEkwGSD+uQQ==
+
+POST URL 
+
+https://ussouthcentral.services.azureml.net/workspaces/744845da5bcc465a8c62345386ed0ae7/services/6ad95efe94a947e4a3372a3a51a960e7/execute?api-version=2.0&details=true
+
+JSON REQUSET 
+
+{"Inputs": {"input1": {"ColumnNames": ["auto_fb_post_mode","category_id","curr_amount_usd","goal_usd","description","has_beneficiary","is_charity"],"Values": [["xxxxx","xxxxx","0","xxxxx","xxxx","xxxxx","xxxxx"]]}},"GlobalParameters": {}}
+%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22auto_fb_post_mode%22%2C%22category_id%22%2C%22curr_amount_usd%22%2C%22goal_usd%22%2C%22description%22%2C%22has_beneficiary%22%2C%22is_charity%22%5D%2C%22Values%22%3A%20%5B%5B%22${}%22%2C%22${}%22%2C%220%22%2C%22${}%22%2C%22${}%22%2C%22${}%22%2C%22${}%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D

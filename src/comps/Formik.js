@@ -10,15 +10,8 @@ import { withFirebase } from './Firebase';
 function PredictForm(props) {
     console.log('!!!!!!!!',props)
     return (
-        <div>        
-
+        <div className='text-left'>
             <AnalysisController func={props.func} /><br />
-            Summarized Results<br />
-
-            
-            show one or the other<br/>
-            <Button variant="success">Yes</Button>
-            <Button variant="danger">No</Button>
         </div>
     )
 }
@@ -38,6 +31,7 @@ const AnalysisController = props => {
                 description: 'we thre keinf',
                 has_beneficiary: 'TRUE',
                 visible_in_search: 'TRUE',
+                is_charity:'TRUE'
             }}
 
             validateOnChange={false}
@@ -83,13 +77,14 @@ const AnalysisController = props => {
 
 const InputForm = props => (    
     <Form>        
-        <First title="Input 1:" name="category_id" type="text" />
-        <Input title="Input 2:" name="goal_usd" type="text" />
-        <Input title="Input 3:" name="title" type="text" />
-        <Input title="Input 4:" name="description" type="text" />
-        <Option title="Input 5:" name="has_beneficiary" type="text" />
-        <Option Input title="Input 6:" name="visible_in_search" type="dropdown" />
-        <bs.Button type='submit' onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
+        <First title="Category" name="category_id" type="text" />
+        <Input title="Goal in Dollars" name="goal_usd" type="text" />
+        <Input title="Title" name="title" type="text" />
+        <Input title="Description" name="description" type="text" />
+        <Option title="Has a Beneficiary" name="has_beneficiary" type="text" />
+        <Option Input title="Visible in Search" name="visible_in_search" type="dropdown" />
+        <Option Input title="Is Charity:" name="is_charity" type="dropdown" />
+        <bs.Button type='submit' variant="dark" onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
 
     </Form>    
 )
@@ -116,11 +111,11 @@ const handleSubmit = async(e,func,formData) =>{
 const Input = (props) => (
     <Field name={props.name}>{rProps => (
         <bs.Form.Group>
-           
+           <bs.Form.Label >{props.title}</bs.Form.Label>
             <bs.Form.Control
                 disabled={props.disabled}
                 type={props.type}
-                placeholder={props.title}
+                
                 {...rProps.field}
             />
             {rProps.meta.touched && rProps.meta.error &&
@@ -132,7 +127,7 @@ const Input = (props) => (
 const Option = (props) => (
     <Field name={props.name}>{rProps => (
         <bs.Form.Group>
-           
+           <bs.Form.Label>{props.title}</bs.Form.Label>
             <bs.Form.Control
                 disabled={props.disabled}
                 type={props.type}
@@ -152,7 +147,7 @@ const Option = (props) => (
 const First = (props) =>(
     <Field name={props.name}>{rProps => (
         <bs.Form.Group>
-           
+           <bs.Form.Label>{props.title}</bs.Form.Label>
             <bs.Form.Control
                 disabled={props.disabled}
                 type={props.type}
