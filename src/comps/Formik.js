@@ -77,6 +77,8 @@ const AnalysisController = props => {
 
 const InputForm = props => (    
     <Form>        
+
+
         <First title="Category" name="category_id" type="text" />
         <Input title="Goal in Dollars" name="goal_usd" type="text" />
         <Input title="Title" name="title" type="text" />
@@ -84,6 +86,7 @@ const InputForm = props => (
         <Option title="Has a Beneficiary" name="has_beneficiary" type="text" />
         <Option Input title="Visible in Search" name="visible_in_search" type="dropdown" />
         <Option Input title="Is Charity:" name="is_charity" type="dropdown" />
+
         <bs.Button type='submit' variant="dark" onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
 
     </Form>    

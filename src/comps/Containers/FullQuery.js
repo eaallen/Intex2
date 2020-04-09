@@ -23,6 +23,7 @@ function FullQuery(props) {
           </textarea>
         </bs.Modal.Body>
         <bs.Modal.Footer>
+          *invalid queries will be discarded 
           <Link to="/search/cust/Custom SQL" className="btn btn-dark" variant="dark" onClick={e=>writeQuery(props,props.context.sql)}>Submit</Link>
         </bs.Modal.Footer>
       </bs.Modal>

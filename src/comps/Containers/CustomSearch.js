@@ -24,9 +24,9 @@ function CustomSearchBase(props){
             </div>
         </Link>
 
-        <Link className="text-dark" to='/search/cust/Surpased Goal'>
+        <Link className="text-dark" to='/search/cust/Surpassed Goal'>
             <div onClick={e=>writeQuery(props,sql3)}>
-                Surpased Goal         
+                Surpassed Goal         
             </div>
         </Link>
         <Link className="text-dark" to='/search/cust/Number of Campaign Hearts'>
