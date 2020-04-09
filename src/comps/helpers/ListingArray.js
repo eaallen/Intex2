@@ -41,7 +41,7 @@ function ListingArrayBase(props){
     }
 }
 const writeQuery = async(props,id) =>{
-    const sql = `SELECT * FROM coronavirusonly where column_a =${id}`
+    const sql = `SELECT * FROM covid_dataset where campaign_id =${id}`
     props.context.loader()
     await props.context.getQueryData(sql)
 }

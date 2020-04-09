@@ -23,7 +23,7 @@ function CampdetailBase(props){
 
     return(
         <div>
-            {/* <p>{info.column_a}</p> */}
+            {/* <p>{info.campaign_id}</p> */}
             <a href={props.context.dataQuerySingle.url}>
                 <img className='detail-img'src={props.context.dataQuerySingle.campaign_image_url}/>
             </a> 

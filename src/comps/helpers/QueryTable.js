@@ -39,7 +39,7 @@ function QueryTableBase(props){
                                 {Object.values(item).map((sub_item,key)=>{
                                     // const attribute = Object.values(sub_item)                                
                                     return(
-                                        <td key={key} onClick={e=>writeQuery(props,item.column_a)}>
+                                        <td key={key} onClick={e=>writeQuery(props,item.campaign_id)}>
                                             <Link className="text-dark" to={`/search/detail`}>{sub_item}</Link>
                                         </td>
                                     )
@@ -55,7 +55,8 @@ function QueryTableBase(props){
     </>)
 }
 const writeQuery = async(props,id) =>{
-    const sql = `SELECT * FROM coronavirusonly where column_a =${id}`
+    console.log('ERRRORS!!!!', id)
+    const sql = `SELECT * FROM covid_dataset where campaign_id =${id}`
     props.context.loader()
     await props.context.getQueryData(sql)
 

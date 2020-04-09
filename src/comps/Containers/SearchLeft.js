@@ -31,7 +31,7 @@ class SearchLeftBase extends React.Component{
         console.log('click')
         const resp = await axios({
             data: {
-                query: "SELECT column_a, title,current_amount FROM coronavirusonly where current_amount > goal ORDER BY current_amount DESC LIMIT 5",
+                query: "SELECT campaign_id, title,current_amount FROM covid_dataset where current_amount > goal ORDER BY current_amount DESC LIMIT 5",
             },
             headers:{                
                 Authorization: this.props.context.key
@@ -43,7 +43,7 @@ class SearchLeftBase extends React.Component{
     }    
     async queryWorst (){
         console.log('click')
-        const sql = "SELECT column_a, title,current_amount FROM coronavirusonly where current_amount < goal ORDER BY current_amount LIMIT 5"
+        const sql = "SELECT campaign_id, title,current_amount FROM covid_dataset where current_amount < goal ORDER BY current_amount LIMIT 5"
         const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
         console.log(resp.data)
         this.setState({...this.state, worst: resp.data})
@@ -52,7 +52,7 @@ class SearchLeftBase extends React.Component{
     async queryMost (){
         console.log('click')
         console.log('click')
-        const sql = "SELECT DISTINCT column_a, title,current_amount FROM coronavirusonly where current_amount > goal ORDER BY days_active LIMIT 5"
+        const sql = "SELECT DISTINCT campaign_id, title,current_amount FROM covid_dataset where current_amount > goal ORDER BY days_active LIMIT 5"
         const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
         console.log(resp.data)
         this.setState({...this.state, mostDonations: resp.data})
@@ -61,7 +61,7 @@ class SearchLeftBase extends React.Component{
     async queryFraud (){
         console.log('click')
         console.log('click')
-        const sql = "SELECT  column_a, title, days_active, current_amount, goal FROM coronavirusonly where deactivated = 'true' AND current_amount < goal ORDER By goal - current_amount desc LIMIT 5"
+        const sql = "SELECT  campaign_id, title, days_active, current_amount, goal FROM covid_dataset where deactivated = 'true' AND current_amount < goal ORDER By goal - current_amount desc LIMIT 5"
         const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
         console.log(resp.data)
         this.setState({...this.state, suspectedFraud: resp.data})

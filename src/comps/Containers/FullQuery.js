@@ -29,10 +29,16 @@ function FullQuery(props) {
       </bs.Modal>
     );
   }
-  const writeQuery = async(props,sql) =>{    
-      console.log(sql)
-      props.context.loader()
-    props.context.getQueryDataAll(sql)
+  const writeQuery = async(props,sql) =>{
+      if(sql.includes("*")){
+        props.context.loader()
+        props.context.getQueryDataAll(sql)
+      }else if(!sql.includes("campaign_id")){
+        alert('You need campaign_id to run')
+      }else{
+        props.context.loader()
+        props.context.getQueryDataAll(sql)  
+      }    
 }
   export default withFirebase(FullQuery)
   

@@ -52,7 +52,7 @@ export const AppContext = React.createContext()
             dom1: document.getElementById('msg'),
             dom2: document.getElementById('msg2'),
             showModal: false,
-            sql: "SELECT * FROM coronavirusonly LIMIT 10",
+            sql: "SELECT * FROM covid_dataset LIMIT 10",
             loading: null,
             // user: null
           }

@@ -8,10 +8,10 @@ import {Nav} from 'react-bootstrap'
 function CustomSearchBase(props){ 
     let user = props.context.user() 
     console.log('click')
-    const sql1 = "SELECT column_a, title,social_share_total, current_amount FROM coronavirusonly ORDER BY social_share_total DESC Limit 50"   
-    const sql2 = "SELECT column_a, title,current_amount, goal FROM coronavirusonly ORDER BY current_amount DESC  Limit 50"  
-    const sql3 = 'SELECT column_a, title,current_amount-goal as ammount_more_than_goal FROM coronavirusonly WHERE current_amount > goal ORDER BY current_amount-goal DESC  Limit 50' 
-    const sql4 = 'SELECT column_a, title, campaign_hearts, current_amount from coronavirusonly Order BY campaign_hearts DESC LIMIT 50'
+    const sql1 = "SELECT campaign_id, title,social_share_total, current_amount FROM covid_dataset ORDER BY social_share_total DESC Limit 50"   
+    const sql2 = "SELECT campaign_id, title,current_amount, goal FROM covid_dataset ORDER BY current_amount DESC  Limit 50"  
+    const sql3 = 'SELECT campaign_id, title,current_amount-goal as ammount_more_than_goal FROM covid_dataset WHERE current_amount > goal ORDER BY current_amount-goal DESC  Limit 50' 
+    const sql4 = 'SELECT campaign_id, title, campaign_hearts, current_amount from covid_dataset Order BY campaign_hearts DESC LIMIT 50'
     return(<>
         <Link className="text-dark" to='/search/cust/Social Media Shares'>
             <div onClick={e=>writeQuery(props,sql1)}>
