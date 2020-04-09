@@ -17,13 +17,14 @@ import SignUp from './comps/Containers/SignUp';
 import SignIn from './comps/Containers/SignIn';
 import ForgotPassword from './comps/Containers/ForgotPassword';
 
-
 function AppBase(props) {
   console.log('props.firebase.state.dataQuerySingle',props.context.key)
   return (
-    <div className="App">
+    <div className="App scroll-div" >
     <Router>
-      <Container fluid > 
+
+      {/* <Container fluid>  */}
+
         <Row>
           <Col xl={12}>
             {/* <Navbar> */}
@@ -31,7 +32,7 @@ function AppBase(props) {
             {/* </Navbar>  */}
           </Col>
         </Row>
-        <Row noGutters>
+        <Row>
           <Col xl={12}>
                <div>
                 
@@ -61,7 +62,7 @@ function AppBase(props) {
                   
           
         </Row>
-      </Container> 
+      {/* </Container>  */}
     </Router> 
     </div>
   );

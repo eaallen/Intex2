@@ -42,12 +42,20 @@
   opacity: 0.5;
 }
 .scroll-div{
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: auto;
-  padding-right: 1rem;
+  /* padding-right: 1rem; */
 }
 .home-img{
   /* background-image: url('./nasa-Q1p7bh3SHj8-unsplash.jpg'); */
+  background-image: url('/src/images/mount.jpeg');
+}
+
+.jumbotron {
+  /* background-image: url('/src/images/mount.jpeg'); */
+  background: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F720435271615760741%2F&psig=AOvVaw3NGYnNA221XMnyk9KmXCz6&ust=1586481834534000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjyidiY2ugCFQAAAAAdAAAAABAD")
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
 }
 
 @keyframes App-logo-spin {

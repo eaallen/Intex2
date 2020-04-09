@@ -8,6 +8,7 @@ function HomeBase(props) {
     console.log('<><><>',user)
     return (
         <div className="text-light bg-dark">
+
                         <Jumbotron className='text-center'>
                 <h1 className="text-dark">
                     {user?
@@ -21,6 +22,7 @@ function HomeBase(props) {
 
                 </h1>
                 
+
             </Jumbotron>
 
             <Row  className='center-row'>
