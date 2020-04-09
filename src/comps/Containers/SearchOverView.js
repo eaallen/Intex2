@@ -10,17 +10,17 @@ function SearchOverView(props){
     let desc
     if(title ==='Exceeded Goal'){
         src = 'https://public.tableau.com/views/INTEX/Bestmostmoney?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'
-        desc= 'Knowing what makes a GoFundMe campaign successful is crucial for getting the amount of donations required. On the right is a visual description the shows the amount of donations received as well as the number of donors combined with amount of social media shares and campaign hearts. '
+        desc= 'Knowing what makes a GoFundMe campaign successful is crucial for getting the amount of donations required. Above is a visual description the shows the amount of donations received as well as the number of donors combined with amount of social media shares and campaign hearts. '
     }else if(title ==='In Need of Help'){
         src="https://public.tableau.com/views/INTEX/InNeedofHelp?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link"
-        desc = 'There is a large number of GoFundMe campaigns that are currently open but have received little to no money. On the right is visual description that shows how many days a campaign has been active by the amount of donations received.'
+        desc = 'There is a large number of GoFundMe campaigns that are currently open but have received little to no money. Above is visual description that shows how many days a campaign has been active by the amount of donations received.'
     }else if(title ==='Fastest to Success'){
         src='https://public.tableau.com/views/INTEX/FastesttoSuccess?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'
-        desc='Of particular importance is the speed at which a GoFundMe campaign reaches its goal. On the right is a visual description of the campaigns that reached the declared goal or surpassed it.'
+        desc='Of particular importance is the speed at which a GoFundMe campaign reaches its goal. Above is a visual description of the campaigns that reached the declared goal or surpassed it.'
     }else if(title ==='Failed Attempts'){
         src='https://public.tableau.com/views/INTEX/FailedAttempts?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'
         desc='There are a few GoFundMe Campaigns that do not get the traction that they need, are the campaigns are suspended before reaching its goal.' + 
-        'On the right is a visual description of the campaigns that were suspended before reaching their goals. Only campaign_id 39375174 is avaliable to view at this time.'
+        'Above is a visual description of the campaigns that were suspended before reaching their goals. Only campaign_id 39375174 is avaliable to view at this time.'
     }
     else {
         src='https://public.tableau.com/views/INTEX/Overall?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'
@@ -32,17 +32,27 @@ function SearchOverView(props){
     <div>
         <h1>{title}</h1>
         <Container>
-            <Row>
-                <Col xs={3} className='text-left'>
-                    <p>
-                        {desc}
-                    </p>
+            <Row className="text-center">
+                <Col className="text-center">
+                    <Row className="text-center">
+                        <Col>
+                        </Col>
+                        <Col>
+                            <iframe frameBorder="0" src={src} width="665" height="355" scrolling='no'>
+                            </iframe>
+                        </Col>
+                        <Col>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <p>
+                            <br></br>{desc}
+                        </p>
+                    </Row>
                 </Col>
-                <Col xs={9}>
-                <iframe frameBorder="0" src={src} width="665" height="355" scrolling='no'>
-                    
-                </iframe>
-                </Col>
+                {/* <Col xs={9}>
+                
+                </Col> */}
             </Row>
         </Container>
     </div>    
