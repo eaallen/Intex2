@@ -39,7 +39,7 @@ function SearchOverView(props){
                     </p>
                 </Col>
                 <Col xs={9}>
-                <iframe src={src} width="665" height="355">
+                <iframe frameBorder="0" src={src} width="665" height="355" scrolling='no'>
                     
                 </iframe>
                 </Col>

@@ -5,7 +5,9 @@ import {Row, Col,Jumbotron,Container} from 'react-bootstrap';
 function Home(props) {
     return (
         <div className="text-light bg-dark">
-                        <Jumbotron className='text-center'>
+            {/* <img src='src\images\mount.jpeg'></img> */}
+            <img src=''></img>
+            <Jumbotron class="jumbotron" className='text-center jumbotron'>
                 <h1 className="text-dark">About Us</h1>
                 <p className="text-dark">
                     this site is currently just for testing 
