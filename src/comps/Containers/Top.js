@@ -14,14 +14,14 @@ function Top(props) {
         hist.push('/SignIn')
     }
     return (
-        <bs.Navbar bg="dark" variant="dark" expand="lg">
+        <bs.Navbar bg="dark" variant="dark" expand="lg" >
             <Navbar.Brand >Corona Killer</Navbar.Brand>      
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <Link className="text-white" to="/home" >Home</Link><span>&nbsp;&nbsp;</span>
-                    <Link className="text-white" to="/search/overview/Overall">Search</Link><span>&nbsp;&nbsp;</span>
-                    <Link className="text-white" to="/analyze">Analyze</Link><span>&nbsp;&nbsp;</span>
+                    <Link className="text-white" to="/search/overview/Overall">Research</Link><span>&nbsp;&nbsp;</span>
+                    <Link className="text-white" to="/analyze">Predict</Link><span>&nbsp;&nbsp;</span>
                 </Nav>
                 <bs.Form inline>
 

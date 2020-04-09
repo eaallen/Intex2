@@ -20,18 +20,18 @@ function QueryTableBase(props){
     return(<>
         <h3>{title}</h3>
         <div className="scroll-div">
-            <Table responsive="sm">
+            <Table responsive="sm" >
                 
-                <thead>
-                    <tr>
+                <thead className='sticky-header'>
+                    <tr className='sticky-header'>
                         {_th.map((item,key)=>{return(
-                            <th key={key}>
+                            <th key={key} className='sticky-header'>
                                 {item}
                             </th>
                         )})}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {allData.map((item,key)=>{
                         return(                        
                             <tr key={key}>

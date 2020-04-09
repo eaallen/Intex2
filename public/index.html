@@ -63,8 +63,15 @@
           //
       }
       function f4(data){
-          console.log('resutls',data.Results.output1.value.Values[0])
+          console.log('resutls----F4',data.Results.output1.value.Values[0][0])
           document.getElementById('msg2').innerHTML = Math.round(data.Results.output1.value.Values[0])
+
+      }
+      function f5(_id, _goal, _description, _has_ben, _is_char){
+        var tag = document.createElement("script");
+        //https://script.google.com/macros/s/AKfycbx5Y9zP-MsL55v2MdzrRrYh09n9T70BzNBw-yRM4SpaUWaiZMg8/exec?data=%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22category_id%22%2C%22curr_amount_usd%22%2C%22donators%22%2C%22title%22%2C%22has_beneficiary%22%2C%22visible_in_search%22%5D%2C%22Values%22%3A%20%5B%5B%22${category_id}%22%2C%220%22%2C%22${donators}%22%2C%22${title}%22%2C%22${has_beneficiary}%22%2C%22${visible_in_search}%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D
+        tag.src =`https://script.google.com/macros/s/AKfycbx5Y9zP-MsL55v2MdzrRrYh09n9T70BzNBw-yRM4SpaUWaiZMg8/exec?data=%7B%22Inputs%22%3A%20%7B%22input1%22%3A%20%7B%22ColumnNames%22%3A%20%5B%22auto_fb_post_mode%22%2C%22category_id%22%2C%22curr_amount_usd%22%2C%22goal_usd%22%2C%22description%22%2C%22has_beneficiary%22%2C%22is_charity%22%5D%2C%22Values%22%3A%20%5B%5B%22${"TRUE"}%22%2C%22${_id}%22%2C%220%22%2C%22${_goal}%22%2C%22${_description}%22%2C%22${_has_ben}%22%2C%22${_is_char}%22%5D%5D%7D%7D%2C%22GlobalParameters%22%3A%20%7B%7D%7D`;
+        document.getElementsByTagName("body")[0].appendChild(tag);
 
       }
 

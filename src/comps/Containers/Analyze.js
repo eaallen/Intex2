@@ -1,24 +1,19 @@
-import React,{useContext} from 'react';
-import { useHistory } from "react-router-dom";
+import React from 'react';
 import PredictForm from '../Formik'
 import * as bs from 'react-bootstrap'
-
-import {Row, Col,Navbar,DropdownButton,Dropdown,ButtonGroup, Nav } from 'react-bootstrap';
-import { Formik } from 'formik';
-
 export default function Analyze(props) {
     const [modalShow, setModalShow] = React.useState(false);
     return (
         <div>
             <h1 className={props.className}>
-                Analyze 
+                Predict 
             </h1><br />
             <bs.Container>
                 <bs.Row>
                     <bs.Col md={.5} >
                     <>
                         <bs.Button variant="dark" onClick={() => setModalShow(true)}>
-                        About Analyze
+                        About Predict
                         </bs.Button>
   
                         <MyVerticallyCenteredModal
@@ -59,12 +54,12 @@ function MyVerticallyCenteredModal(props) {
       >
         <bs.Modal.Header closeButton>
           <bs.Modal.Title id="contained-modal-title-vcenter">
-            About the Analyze function
+            About the Predict function
           </bs.Modal.Title>
         </bs.Modal.Header>
         <bs.Modal.Body>
           <p>
-            This is all about the Analyze function
+            This is all about the Predict function
           </p>
         </bs.Modal.Body>
         <bs.Modal.Footer>

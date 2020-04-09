@@ -61,7 +61,7 @@ class SearchLeftBase extends React.Component{
     async queryFraud (){
         console.log('click')
         console.log('click')
-        const sql = "SELECT  campaign_id, title, days_active, current_amount, goal FROM covid_dataset where deactivated = 'true' AND current_amount < goal ORDER By goal - current_amount desc LIMIT 5"
+        const sql = "SELECT  campaign_id, title, days_active, current_amount, goal , covid_dataset.status FROM covid_dataset where status = 0 "
         const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
         console.log(resp.data)
         this.setState({...this.state, suspectedFraud: resp.data})
