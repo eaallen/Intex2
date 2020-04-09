@@ -1,14 +1,10 @@
 import React from 'react'
 import * as bs from 'react-bootstrap'
 import { Formik, Form, Field} from 'formik'
-import Spinner from 'react-bootstrap/Spinner'
-import { Container, Row, Col, Button, Jumbotron} from 'react-bootstrap';
-import { withFirebase } from './Firebase';
 
 //this is a xommit test
 
 function PredictForm(props) {
-    console.log('!!!!!!!!',props)
     return (
         <div className='text-left'>
             <AnalysisController func={props.func} /><br />
@@ -19,16 +15,15 @@ export default PredictForm
 
 
 const AnalysisController = props => {
-    const [getError, setError] = React.useState(null)
     return (
         <Formik
 
             func={props.func}
             initialValues={{
                 category_id: '1',
-                goal_usd: '2000',
-                title: 'of orinthaw',
-                description: 'we thre keinf',
+                goal_usd: '',
+                title: '',
+                description: '',
                 has_beneficiary: 'TRUE',
                 visible_in_search: 'TRUE',
                 is_charity:'TRUE'
@@ -38,10 +33,8 @@ const AnalysisController = props => {
             validateOnBlur={false}
             validate={values => {
                 const errors = {}
-                console.log('validating', values)
-                let arr_values = Object.keys(values)
-                arr_values.map( item =>{
-                    if(values.input1 === ''){
+                
+                    if(values.title === ''){
                         errors.name = 'Please fill out input 1'
                     }
                     if(values.input2 === ''){
@@ -59,12 +52,11 @@ const AnalysisController = props => {
                     if(values.input6 === ''){
                         errors.name = 'Please fill out input 6'
                     }
-                })
+                
                 
                 return errors
             }}
             onSubmit={async (values, actions) => {
-                console.log('PREDICTING...')
             }}
         >
         {form => (
@@ -87,14 +79,13 @@ const InputForm = props => (
         <Option Input title="Visible in Search" name="visible_in_search" type="dropdown" />
         <Option Input title="Is Charity:" name="is_charity" type="dropdown" />
 
-        <bs.Button type='submit' variant="dark" onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict {console.log('PEOPSPSQOQ',props)}</bs.Button>
+        <bs.Button type='submit' variant="dark" onClick={e=>handleSubmit(e,props.func,Object.values(props.form.values))}>Predict </bs.Button>
 
     </Form>    
 )
 
 const handleSubmit = async(e,func,formData) =>{
     e.preventDefault()
-    console.log('______>',formData)
     
 
     document.getElementById('msg').innerHTML = ''
@@ -103,7 +94,6 @@ const handleSubmit = async(e,func,formData) =>{
     if(func==='msg'){
         await window.f1(formData)   
     }else{
-        console.log('fire')
         await window.f3(formData)  
     }
 
@@ -184,21 +174,3 @@ const First = (props) =>(
 
 )
 
-const CARD_ELEMENT_OPTIONS = {
-    style: {
-        base:{
-            color: "#32325d",
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: "antialiased",
-            fontSize: "16px",
-            "::placeholder": {
-                color: "#aab7c4",
-            },
-        },
-        invalid: {
-            color: "#fa755a",
-            iconColor: "#fa755a",
-        },
-    }
-    
-}

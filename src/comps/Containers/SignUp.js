@@ -21,28 +21,16 @@ class SignUpBase extends React.Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    console.log('doCreateUserWithEmailAndPassword',this.props.context)
-    const { email, student_id,dw_api,passwordOne } = this.state;
+    const { email,passwordOne } = this.state;
     this.props.context.doCreateUserWithEmailAndPassword(email, passwordOne).then(authUser => {
         this.props.context.updateUserAuth(authUser.user)
-        this.props.context.doAddRecord('user_info').set({
-          email: email,
-          student_id: student_id,
-          data_world_api: dw_api
-        }).then(()=>{
-            this.props.history.push(ROUTE.HOME)
-        }).catch((error)=>{
-          console.error('!!!', error)
-        })
         this.setState({ ...INITIAL_STATE });
 
-        // this.props.history.push(ROUTES.HOME);
+        this.props.history.push(ROUTE.HOME);
       })
       .catch(error => {
         this.setState({ error });
         this.props.context.doGetQueryRecord('user_info','email','eaallen@byu.edu').then(querySnapshot=>{
-          const data = querySnapshot.docs.map(doc => doc.data());
-          console.log('-----<>>>>!',data);
         })
 
       });
@@ -53,11 +41,10 @@ class SignUpBase extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
   render() {
+    const isInvalid = this.state.passwordOne !==this.state.passwordTwo || this.state.email ==='' || this.state.passwordOne===''
     const {
         
         email,
-        student_id,
-        dw_api,
         passwordOne,
         passwordTwo,
         error,
@@ -97,7 +84,7 @@ class SignUpBase extends React.Component {
             placeholder="Confirm Password"
           /> 
           </Form.Group>  
-          <Button onClick={this.onSubmit} className='option long-submit'>
+          <Button onClick={this.onSubmit} className='option long-submit' disabled={isInvalid}>
             Sign Up
           </Button>
           {error && <p>{error.message}</p>}

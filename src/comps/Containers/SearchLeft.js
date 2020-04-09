@@ -1,11 +1,9 @@
-import React,{useContext} from 'react';
-import { useHistory } from "react-router-dom";
-import {Row, Col, Button,Accordion,Card} from 'react-bootstrap';
+import React from 'react';
+// import { useHistory } from "react-router-dom";
+import {Button,Accordion,Card} from 'react-bootstrap';
 import axios from 'axios'
-import { wait } from '@testing-library/react';
 import {withFirebase} from '../Firebase'
 import ListingArray from '../helpers/ListingArray'
-import MyAccordian from '../helpers/MyAccordian'
 import {Link} from 'react-router-dom'
 import CustomSearch from './CustomSearch'
 class SearchLeftBase extends React.Component{
@@ -28,7 +26,6 @@ class SearchLeftBase extends React.Component{
     }
     // calles a single record
     async queryBest (){
-        console.log('click')
         const resp = await axios({
             data: {
                 query: "SELECT campaign_id, title,current_amount FROM covid_dataset where current_amount > goal ORDER BY current_amount DESC LIMIT 5",
@@ -37,33 +34,24 @@ class SearchLeftBase extends React.Component{
                 Authorization: this.props.context.key
             }
         });
-        console.log(resp.data)
         this.setState({...this.state, best: resp.data})
 
     }    
     async queryWorst (){
-        console.log('click')
         const sql = "SELECT campaign_id, title,current_amount FROM covid_dataset where current_amount < goal ORDER BY current_amount LIMIT 5"
         const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
-        console.log(resp.data)
         this.setState({...this.state, worst: resp.data})
 
     }    
     async queryMost (){
-        console.log('click')
-        console.log('click')
         const sql = "SELECT DISTINCT campaign_id, title,current_amount FROM covid_dataset where current_amount > goal ORDER BY days_active LIMIT 5"
         const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
-        console.log(resp.data)
         this.setState({...this.state, mostDonations: resp.data})
 
     }    
     async queryFraud (){
-        console.log('click')
-        console.log('click')
         const sql = "SELECT  campaign_id, title, days_active, current_amount, goal , covid_dataset.status FROM covid_dataset where status = 0 "
         const resp = await axios({data: {query: sql,},headers:{Authorization: this.props.context.key}});
-        console.log(resp.data)
         this.setState({...this.state, suspectedFraud: resp.data})
     }  
     async bestSummary(){
@@ -79,7 +67,6 @@ class SearchLeftBase extends React.Component{
                             <Card.Header>
                             <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="0">
                                 Explore Data
-                                {console.log('the best',this.state.best)}
                             </Accordion.Toggle>
                             </Card.Header>
                         </Link>
@@ -95,7 +82,6 @@ class SearchLeftBase extends React.Component{
                         <Card.Header>
                         <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="1" onClick={e=>{if(!this.state.best)this.queryBest()}}>
                             Best
-                            {console.log('the best',this.state.best)}
                         </Accordion.Toggle>
                         </Card.Header>
                     </Link>

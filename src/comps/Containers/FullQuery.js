@@ -4,7 +4,6 @@ import * as bs from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 function FullQuery(props) {
-    console.log(props.context.sql)
     return (
       <bs.Modal
         {...props}

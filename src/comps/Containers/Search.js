@@ -22,7 +22,6 @@ class SearchBase extends React.Component{
 
     // calls a single record
     render(){
-        let src='https://public.tableau.com/views/INTEX/Overall?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'
         return (
             <div className={this.props.className}>
                 <FullQuery

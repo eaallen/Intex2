@@ -4,7 +4,6 @@ import { withFirebase } from '../Firebase';
 
 function HomeBase(props) {
     let user = props.context.user()
-    console.log('<><><>',user)
     return (
         <div className="text-light bg-dark">
 

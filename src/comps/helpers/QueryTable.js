@@ -5,12 +5,10 @@ import {Link} from 'react-router-dom'
 import { useRouteMatch} from "react-router-dom";
 
 function QueryTableBase(props){
-    console.log('PROPS', props)
     const data = props.context.dataQueryAll[0]
     const _th = Object.keys(data)
     const allData = props.context.dataQueryAll
     let match = useRouteMatch("/search/cust/:title");
-    console.log(match)
     let title = match.params.title
     if(props.context.loading){
         return(
@@ -55,7 +53,6 @@ function QueryTableBase(props){
     </>)
 }
 const writeQuery = async(props,id) =>{
-    console.log('ERRRORS!!!!', id)
     const sql = `SELECT * FROM covid_dataset where campaign_id =${id}`
     props.context.loader()
     await props.context.getQueryData(sql)
