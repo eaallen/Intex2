@@ -15,14 +15,11 @@ function CampdetailBase(props){
     let summary
     
     if(num >= 0){
-        summary = "Over goal by $" + num
+        summary = <p className="text-success">{"Over goal by $" + num}</p>
     }
     else{
-        summary = "Under goal by $" + Math.abs(num)
+        summary = <p className="text-danger">{"Under goal by $" + Math.abs(num)}</p>
     }
-
-    console.log('NUM>>>>>>>>>>',num)
-    console.log('SUMMARY>>>>>>>>>>',summary)
 
     return(
         <div>
@@ -32,16 +29,14 @@ function CampdetailBase(props){
             </a> 
             <h3>{props.context.dataQuerySingle.title}</h3>
             {/* here */}
-            <p className="text-success">{summary}</p>
+            {summary}
             {props.context.dataQuerySingle? 
             <>{Object.entries(props.context.dataQuerySingle).map(item=>{return(
                     <Row key={item[0]+'key'}>
                         <Col >{item[0]}</Col><Col >{item[1]}</Col>
                     </Row>
                 )})}</>
-            :<></>}
-
-                        
+            :<></>}       
         </div>
     )
 }
