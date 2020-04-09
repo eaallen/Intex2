@@ -11,14 +11,29 @@ function CampdetailBase(props){
         )
     }
 
+    let num = info.current_amount - info.goal
+    let summary
+    
+    if(num >= 0){
+        summary = "Over goal by $" + num
+    }
+    else{
+        summary = "Under goal by $" + Math.abs(num)
+    }
+
+    console.log('NUM>>>>>>>>>>',num)
+    console.log('SUMMARY>>>>>>>>>>',summary)
+
     return(
         <div>
-            <p>{info.column_a}</p>
+            {/* <p>{info.column_a}</p> */}
             <a href={props.context.dataQuerySingle.url}>
-                <img className='detail-img'src={  props.context.dataQuerySingle.campaign_image_url}/>
+                <img className='detail-img'src={props.context.dataQuerySingle.campaign_image_url}/>
             </a> 
             <h3>{props.context.dataQuerySingle.title}</h3>
-            { props.context.dataQuerySingle? 
+            {/* here */}
+            <p className="text-success">{summary}</p>
+            {props.context.dataQuerySingle? 
             <>{Object.entries(props.context.dataQuerySingle).map(item=>{return(
                     <Row key={item[0]+'key'}>
                         <Col >{item[0]}</Col><Col >{item[1]}</Col>
