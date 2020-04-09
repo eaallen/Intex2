@@ -1,10 +1,8 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import { useRouteMatch} from "react-router-dom";
-import NavbarCollapse from 'react-bootstrap/NavbarCollapse';
 function SearchOverView(props){
     let match = useRouteMatch("/search/overview/:title");
-    console.log(match)
     let title = match.params.title
     let src
     let desc
@@ -38,7 +36,7 @@ function SearchOverView(props){
                         <Col>
                         </Col>
                         <Col>
-                            <iframe frameBorder="0" src={src} width="665" height="355" scrolling='no'>
+                            <iframe title='iframeyeet' frameBorder="0" src={src} width="665" height="355" scrolling='no'>
                             </iframe>
                         </Col>
                         <Col>

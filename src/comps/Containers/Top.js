@@ -1,13 +1,12 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import * as bs from 'react-bootstrap'
-import {Row, Col,Navbar,DropdownButton,Dropdown,ButtonGroup, Nav } from 'react-bootstrap';
+import {Navbar,Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import {withFirebase} from '../Firebase'
 
 function Top(props) {
     let user = props.context.user()
-    console.log('----->',user)
     const hist = useHistory()
     const signOut = () =>{
         props.context.doSignOut()

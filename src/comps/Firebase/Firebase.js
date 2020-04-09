@@ -28,7 +28,6 @@ export const AppContext = React.createContext()
             setModal: this.setModal,
             getDataFromTextArea: this.getDataFromTextArea,
             loader: this.loader,
-            updateUserAuth:this.updateUserAuth,
             doCreateUserWithEmailAndPassword:this.doCreateUserWithEmailAndPassword,
             doSignInWithEmailAndPassword:this.doSignInWithEmailAndPassword,
             doSignInWithGoogle:this.doSignInWithGoogle,
@@ -64,23 +63,19 @@ export const AppContext = React.createContext()
           this.googleProvider =new app.auth.GoogleAuthProvider();
           this.auth.onAuthStateChanged(function(user) {
             if (user){
-              console.log('user accorfing to firebase',user)
             }else{
-              console.log('according to firebase: no user info')
             }    
           });
         }
 
         
         updateUserAuth = (userInfo) =>{
-          console.log('Not in use')
           // this.state.auth_user = userInfo
           // // this.state.auth_user = userInfo          
           // // this.setState({auth_user: userInfo})
         }
         getApiToken = async() => {
             const key = await this.getOneRecord('startup','exMEUpW9TkwEs0Tu5plh').get().then(doc =>{ return doc.data()}) 
-            console.log('THIS KEY FIREBASE',key)
             return key.api
         }
 
@@ -103,7 +98,7 @@ export const AppContext = React.createContext()
         checkState = async() =>{ await
           this.auth.onAuthStateChanged(function(user) {
             if (user){
-              console.log('user accorfing to firebase',user)
+              console.log('user accorfing to firebase')
             }else{
               console.log('according to firebase: no user info')
             }    
@@ -127,10 +122,8 @@ export const AppContext = React.createContext()
         getQueryData = async(sql) =>{
           let resp = null          
           resp = await axios({data: {query: sql,},headers:{Authorization:await this.getApiToken()}});
-          console.log('RESP.DATA____>',resp.data[0])
           // this.setState({...this.state, dataQuerySingle:resp.data[0]})
           this.setState(state=> produce(state, draft=>{
-            console.log('()()()()',resp.data[0])
             draft.dataQuerySingle = resp.data[0]
             draft.loading = false
         }))
@@ -143,7 +136,6 @@ export const AppContext = React.createContext()
             
               resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
   
-              console.log('RESP.DATA____>',resp.data)
               this.setState({...this.state, dataQueryAll:resp.data, loading:false})
             }catch(e){
               alert('SQL is invalid')
@@ -158,13 +150,9 @@ export const AppContext = React.createContext()
           axios.defaults.headers.post['Content-Type'] = 'application/json';
           axios.defaults.baseURL = 'https://api.data.world/v0/sql/eaallen/cleancovid';
           axios.defaults.method= 'post'    
-
-          const key = await this.getOneRecord('startup','exMEUpW9TkwEs0Tu5plh').get().then(doc =>{ return doc.data()}) 
-          console.log('THIS KEY FIREBASE',key)
           this.setState({...this.state, key: await this.getApiToken()})
         }
         render(){
-          console.log('LOADING', this.state.loading)
           if(!this.state.key){
             return(
                 <>

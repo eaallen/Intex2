@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import './index.css'
 import {Container, Row,Col} from 'react-bootstrap'
-import Checkout from './comps/Formik'
 import Top from './comps/Containers/Top'
 import Home from './comps/Containers/Home'
 import Search from './comps/Containers/Search'
@@ -18,7 +17,6 @@ import SignIn from './comps/Containers/SignIn';
 import ForgotPassword from './comps/Containers/ForgotPassword';
 
 function AppBase(props) {
-  console.log('props.firebase.state.dataQuerySingle',props.context.key)
   return (
     <div className="App" >
     <Router>

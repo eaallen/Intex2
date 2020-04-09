@@ -3,7 +3,6 @@ import {withFirebase} from './../Firebase'
 import {Link} from 'react-router-dom'
 function CustomSearchBase(props){ 
     let user = props.context.user() 
-    console.log('click')
     const sql1 = "SELECT campaign_id, title,social_share_total, current_amount FROM covid_dataset ORDER BY social_share_total DESC Limit 50"   
     const sql2 = "SELECT campaign_id, title,current_amount, goal FROM covid_dataset ORDER BY current_amount DESC  Limit 50"  
     const sql3 = 'SELECT campaign_id, title,current_amount-goal as ammount_more_than_goal FROM covid_dataset WHERE current_amount > goal ORDER BY current_amount-goal DESC  Limit 50' 

@@ -1,13 +1,12 @@
 import React from 'react'
 import {Row,Col,Spinner} from 'react-bootstrap'
 import {withFirebase} from '../Firebase'
-import { useRouteMatch} from "react-router-dom";
+
 
 function CampdetailBase(props){
     const info = props.context.dataQuerySingle
     const infoKey = Object.keys(info)
     const infoVal = Object.values(info)
-    console.log(info.category_id, info.goal, info.description, info.has_beneficiary, info.is_charity)
     window.f5(info.category_id, info.goal_usd, info.description, info.has_beneficiary, info.is_charity )
     if(props.context.loading){
         return(
@@ -29,7 +28,7 @@ function CampdetailBase(props){
         <div className='jumbotron'>
             {/* <p>{info.campaign_id}</p> */}
             <a href={props.context.dataQuerySingle.url}>
-                <img className='detail-img'src={props.context.dataQuerySingle.campaign_image_url}/>
+                <img className='detail-img'src={props.context.dataQuerySingle.campaign_image_url} alt='Not provided'/>
             </a> 
             <h3>{props.context.dataQuerySingle.title}</h3>
             {/* here */}
@@ -60,7 +59,7 @@ function CampdetailBase(props){
             </Row>
             <Row>
                 <Col className='text-right'>
-                    <i>Predicted current amount</i>
+                    <i>*Predicted current amount</i>
                 </Col>
                 <Col className='text-left'>
                    <i> $<span id='msg2'><Spinner animation="grow" size="sm" variant='warning'></Spinner></span></i>
@@ -136,6 +135,8 @@ function CampdetailBase(props){
                 
             <div className='text-left'>
                 {infoVal[11]}
+                <br></br><br></br>
+                *amount that the Predict calculator forcasts
             </div>        
         </div>
     )

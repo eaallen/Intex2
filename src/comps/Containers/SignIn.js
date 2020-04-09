@@ -27,11 +27,8 @@ class SignInBase extends React.Component {
     }
 
     submit_form =(e)=>{
-        console.log('1', this.state)
        this.props.context.doSignInWithEmailAndPassword(this.state.email, this.state.password1).then(() =>{
-        console.log('2')
         this.setState(INITIAL_STATE)
-        console.log('3')
         this.props.history.push(ROUTE.HOME)
     }).catch(e => {
            this.setState({error: e.message})
@@ -41,9 +38,6 @@ class SignInBase extends React.Component {
     
 
     render(){      
-       const isInvalid = this.state.password1 !=='' || this.state.email !==''
-    //    console.log('HISTORY-->', this.props.history)
-      console.log('>>>>>>', this.state)
     return (
         <Jumbotron>
             

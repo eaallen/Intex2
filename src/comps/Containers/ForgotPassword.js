@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form,Button,Col} from 'react-bootstrap';
+import { Form,Button} from 'react-bootstrap';
 import { withFirebase } from '../Firebase';
 import { withRouter } from 'react-router-dom';
 import * as ROUTE from '../../constanst/router'
@@ -28,9 +28,7 @@ class ForgotPasswordBase extends React.Component {
     submit_form =(e)=>{
         
        this.props.context.doPasswordReset(this.state.email).then(() =>{
-        console.log('2')
         this.setState(INITIAL_STATE)
-        console.log('3')
         alert('password reset email sent')
         this.props.history.push(ROUTE.SIGN_IN)
     }).catch(e => {
@@ -42,8 +40,6 @@ class ForgotPasswordBase extends React.Component {
 
     render(){      
        const isInvalid = this.state.password1 !=='' || this.state.email !==''
-    //    console.log('HISTORY-->', this.props.history)
-      console.log('>>>>>>', this.state)
     return (
         <div>
             
@@ -56,7 +52,7 @@ class ForgotPasswordBase extends React.Component {
                         </Form.Text>
                     </Form.Group>
 
-                    <Button variant="danger" type="submit" >
+                    <Button variant="danger" type="submit"  disabled={isInvalid}>
                         Reset My Password
                     </Button>
                     <div>
