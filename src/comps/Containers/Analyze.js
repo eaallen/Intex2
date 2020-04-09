@@ -29,14 +29,11 @@ export default function Analyze(props) {
                     </bs.Col>
                     <bs.Col>
 
-                        <div md='8'>Predicted Amount of Donators:</div>
+                        <div md='8'>Predicted Amount of Donors:</div>
                         <p id='msg'></p>
                         
-                        <div md='8'>Predicted Amount Donations Recieved:</div>
+                        <div md='8'>Predicted Amount of Donations Recieved:</div>
                         <p id="msg2"></p>
-
-           
-
                     </bs.Col>
                 </bs.Row>
             </bs.Container>
