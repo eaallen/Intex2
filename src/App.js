@@ -13,6 +13,9 @@ import {
   Route,
 } from "react-router-dom";
 import { withFirebase } from './comps/Firebase';
+import SignUp from './comps/Containers/SignUp';
+import SignIn from './comps/Containers/SignIn';
+import ForgotPassword from './comps/Containers/ForgotPassword';
 
 
 function AppBase(props) {
@@ -20,7 +23,7 @@ function AppBase(props) {
   return (
     <div className="App">
     <Router>
-      <Container fluid> 
+      <Container fluid > 
         <Row>
           <Col xl={12}>
             {/* <Navbar> */}
@@ -33,16 +36,20 @@ function AppBase(props) {
                <div>
                 
                 <Switch>
-                  
-                  
+                <Route path='/SignUp'>
+                    <SignUp/>
+                  </Route>
+                  <Route path='/ResetPassword'>
+                    <ForgotPassword/>
+                  </Route>
+                  <Route path='/SignIn'>
+                    <SignIn/>
+                  </Route>
                   <Route path="/Search" >
                     <Search />
                   </Route>
                   <Route path="/Analyze">
                     <Analyze />
-                  </Route>
-                  <Route path="/Analyze2">
-                    <Analyze2 />
                   </Route>
                   <Route path="/" key='filter' >
                     <Home className="bg-warning"/>
