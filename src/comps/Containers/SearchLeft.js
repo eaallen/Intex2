@@ -73,15 +73,17 @@ class SearchLeftBase extends React.Component{
         return (
             
             <div className={this.props.className}>
-                <Accordion className='text-left'>
+                <Accordion defaultActiveKey="0" className='text-left'>
                     <Card>
-                        <Card.Header>
-                        <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="4">
-                            Explore Data
-                            {console.log('the best',this.state.best)}
-                        </Accordion.Toggle>
-                        </Card.Header>
-                    <Accordion.Collapse eventKey="4">
+                        <Link to={'/search/overview/Overall'}>
+                            <Card.Header>
+                            <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="0">
+                                Explore Data
+                                {console.log('the best',this.state.best)}
+                            </Accordion.Toggle>
+                            </Card.Header>
+                        </Link>
+                    <Accordion.Collapse eventKey="0">
                         <Card.Body>                        
                             <CustomSearch />
                         </Card.Body>
@@ -91,13 +93,13 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/Exceeded Goal'}>
                         <Card.Header>
-                        <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="0" onClick={e=>{if(!this.state.best)this.queryBest()}}>
+                        <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="1" onClick={e=>{if(!this.state.best)this.queryBest()}}>
                             Best
                             {console.log('the best',this.state.best)}
                         </Accordion.Toggle>
                         </Card.Header>
                     </Link>
-                    <Accordion.Collapse eventKey="0">
+                    <Accordion.Collapse eventKey="1">
                         <Card.Body>                        
                             {this.state.best?               
                            <ListingArray array={this.state.best} showdata={this.props.showdata}/>                   
@@ -111,12 +113,12 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/In Need of Help'}>
                     <Card.Header>
-                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="1" onClick={e=>{if(!this.state.worst)this.queryWorst()}}>
+                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="2" onClick={e=>{if(!this.state.worst)this.queryWorst()}}>
                         In Need of Help
                     </Accordion.Toggle>
                     </Card.Header>
                     </Link>
-                    <Accordion.Collapse eventKey="1">
+                    <Accordion.Collapse eventKey="2">
                         <Card.Body>                        
                             {this.state.worst?               
                            <ListingArray array={this.state.worst} showdata={this.props.showdata}/>                   
@@ -130,12 +132,12 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/Fastest to Success'}>
                     <Card.Header>
-                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="2" onClick={e=>{if(!this.state.mostDonations)this.queryMost()}}>
+                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="3" onClick={e=>{if(!this.state.mostDonations)this.queryMost()}}>
                         Fastest to Success 
                     </Accordion.Toggle>
                     </Card.Header>
                     </Link>
-                    <Accordion.Collapse eventKey="2">
+                    <Accordion.Collapse eventKey="3">
                         <Card.Body>                        
                             {this.state.mostDonations?               
                            <ListingArray array={this.state.mostDonations} showdata={this.props.showdata}/>                   
@@ -148,12 +150,12 @@ class SearchLeftBase extends React.Component{
                     <Card>
                     <Link to={'/search/overview/Failed Attempts'}>
                     <Card.Header>
-                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="3" onClick={e=>{if(!this.state.suspectedFraud)this.queryFraud()}}>
+                    <Accordion.Toggle className="text-dark" as={Button} variant="link" eventKey="4" onClick={e=>{if(!this.state.suspectedFraud)this.queryFraud()}}>
                         Failed Attempts 
                     </Accordion.Toggle>
                     </Card.Header>
                     </Link>
-                    <Accordion.Collapse eventKey="3">
+                    <Accordion.Collapse eventKey="4">
                         <Card.Body>                        
                             {this.state.suspectedFraud?               
                            <ListingArray array={this.state.suspectedFraud} showdata={this.props.showdata} custom={4}/>                   
