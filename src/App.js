@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './index.css'
 import {Container, Row,Col} from 'react-bootstrap'
 import Checkout from './comps/Formik'
 import Top from './comps/Containers/Top'

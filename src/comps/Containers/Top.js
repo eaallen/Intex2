@@ -25,7 +25,7 @@ function Top(props) {
                 </Nav>
                 <bs.Form inline>
 
-                    <bs.FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    
                     {user?
                         <bs.Button variant="outline-light" onClick={e=>signOut()}>Sign out</bs.Button>   
                     :

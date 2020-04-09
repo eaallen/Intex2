@@ -1,11 +1,10 @@
 import React from 'react';
 import {withFirebase} from '../Firebase'
 import {Form,Button,Jumbotron} from 'react-bootstrap'
-import {HashRouter  as Router,Switch,Route,Link} from "react-router-dom";
-
+import {Link} from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
-// import * as ROUTES from '../../constants/routes';
-
+import * as ROUTE from '../../constanst/router'
 
 const INITIAL_STATE = {    
     email: '',
@@ -31,10 +30,7 @@ class SignUpBase extends React.Component {
           student_id: student_id,
           data_world_api: dw_api
         }).then(()=>{
-          console.log('doCreateUserWithEmailAndPasswordAfter submisstion',this.props.context)
-          console.log('this firestore is awesome')
-          
-
+            this.props.history.push(ROUTE.HOME)
         }).catch((error)=>{
           console.error('!!!', error)
         })
@@ -114,5 +110,5 @@ class SignUpBase extends React.Component {
   }
 }
 
-const SignUp = withFirebase(SignUpBase);
+const SignUp = withRouter(withFirebase(SignUpBase));
 export default SignUp;

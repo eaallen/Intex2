@@ -50,12 +50,13 @@ function CustomSearchBase(props){
         </>
         :
         <>
-        <div className="text-warning link">
+        <Link className="text-warning" to='/SignUp'>     
+        <div className="">
             <p>
                 Sign up to get SandBox SQL access       
             </p>
         </div>
-
+        </Link>
         </>
         }
 </>)
