@@ -1,6 +1,5 @@
-import React,{useContext} from 'react';
-import { useHistory } from "react-router-dom";
-import {Row, Col,Jumbotron,Container} from 'react-bootstrap';
+import React from 'react';
+import {Row, Col,Container} from 'react-bootstrap';
 import { withFirebase } from '../Firebase';
 
 function HomeBase(props) {
@@ -9,8 +8,8 @@ function HomeBase(props) {
     return (
         <div className="text-light bg-dark">
 
-            <div className='text-center jumbotron' style={{backgroundColor:'smokewhite'}}>
-                <h1 className="text-dark">
+            <div className='text-center jumbotron' style={{backgroundColor:'smokewhite',backgroundImage:'url("/bg.jpg")',paddingTop:'15.9rem',paddingBottom:'15.9rem'}}>
+                <h1 className="text-light">
                     {user?
                     <>
                        Welcome, {user.email}

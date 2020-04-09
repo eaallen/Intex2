@@ -45,9 +45,13 @@
   overflow-x: scroll;
   /* padding-right: 1rem; */
 }
+.home-scroll-div{
+  overflow-x: scroll;
+  /* padding-right: 1rem; */
+}
 .home-img{
   /* background-image: url('./nasa-Q1p7bh3SHj8-unsplash.jpg'); */
-  background-image: url('/src/images/mount.jpeg');
+  background-image: url('/nasa-Q1p7bh3SHj8-unsplash.jpg');
 }
 .sticky-header{
   position: sticky !important;

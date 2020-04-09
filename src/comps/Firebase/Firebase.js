@@ -138,11 +138,16 @@ export const AppContext = React.createContext()
 
       }
         getQueryDataAll = async(sql) =>{
-            let resp = null
+            try{
+              let resp = null
             
-            resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
-            console.log('RESP.DATA____>',resp.data)
-            this.setState({...this.state, dataQueryAll:resp.data, loading:false})
+              resp = await axios({data: {query: sql,},headers:{Authorization: await this.getApiToken()}});
+  
+              console.log('RESP.DATA____>',resp.data)
+              this.setState({...this.state, dataQueryAll:resp.data, loading:false})
+            }catch(e){
+              alert('SQL is invalid')
+            }
             
             // this.state.dataQuerySingle= resp.data[0]
         }

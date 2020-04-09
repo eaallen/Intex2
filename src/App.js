@@ -23,7 +23,7 @@ function AppBase(props) {
     <div className="App" >
     <Router>
 
-      <Container fluid> 
+      <Container fluid > 
 
         <Row>
           <Col xl={12}>
