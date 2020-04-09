@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form,Button,Jumbotron} from 'react-bootstrap';
 import { withFirebase } from '../Firebase';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 // import {compose} from 'recompose'
 import * as ROUTE from '../../constanst/router'
 //import Footer from 'react-bootstrap/';
@@ -64,7 +64,10 @@ class SignInBase extends React.Component {
                     <Button variant="primary" type="submit" >
                         Submit
                     </Button>
-                    
+                    <Form.Text className="text-muted">
+                        <Link to='/SignUp'>Sign up</Link>
+                    </Form.Text>
+
                     <div>
                         {this.state.error? <div>{this.state.error} <a href='/ResetPassword'>forgot password?</a></div>: <></>}
                     </div>
