@@ -59,7 +59,7 @@ function CampdetailBase(props){
             </Row>
             <Row>
                 <Col className='text-right'>
-                    <i>Predicted current amount</i>
+                    <i>*Predicted current amount</i>
                 </Col>
                 <Col className='text-left'>
                    <i> $<span id='msg2'><Spinner animation="grow" size="sm" variant='warning'></Spinner></span></i>
@@ -135,6 +135,8 @@ function CampdetailBase(props){
                 
             <div className='text-left'>
                 {infoVal[11]}
+                <br></br><br></br>
+                *amount that the Predict calculator forcasts
             </div>        
         </div>
     )
