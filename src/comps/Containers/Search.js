@@ -1,17 +1,10 @@
-import React,{useContext} from 'react';
-import { useHistory } from "react-router-dom";
-import {Row, Col, Button} from 'react-bootstrap';
-import axios from 'axios';
+import React from 'react';
+import {Row, Col} from 'react-bootstrap';
 import {withFirebase} from '../Firebase';
 import SearchLeft from './SearchLeft';
 import SearchOverView from './SearchOverView'
-import AppContext from '../context/AppContext'
 import QueryTable from '../helpers/QueryTable'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-  } from "react-router-dom";
+import {Switch,Route,} from "react-router-dom";
 import Campdetail from './CampDetail'
 import FullQuery from './FullQuery'
   

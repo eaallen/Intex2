@@ -1,10 +1,6 @@
 import React from 'react'
 import {withFirebase} from './../Firebase'
-import axios from 'axios'
-import AppContext from '../context/AppContext'
-import {waitingfor} from '../helpers/ListingArray'
 import {Link} from 'react-router-dom'
-import {Nav} from 'react-bootstrap'
 function CustomSearchBase(props){ 
     let user = props.context.user() 
     console.log('click')
