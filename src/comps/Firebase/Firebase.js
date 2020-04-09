@@ -28,6 +28,20 @@ export const AppContext = React.createContext()
             setModal: this.setModal,
             getDataFromTextArea: this.getDataFromTextArea,
             loader: this.loader,
+            updateUserAuth:this.updateUserAuth,
+            doCreateUserWithEmailAndPassword:this.doCreateUserWithEmailAndPassword,
+            doSignInWithEmailAndPassword:this.doSignInWithEmailAndPassword,
+            doSignInWithGoogle:this.doSignInWithGoogle,
+            doSignInWithRedirect:this.doSignInWithRedirect,
+            doGetRedirectResult:this.doGetRedirectResult,
+            doSignOut:this.doSignOut,
+            doPasswordReset:this.doPasswordReset,
+            doPasswordUpdate:this.doPasswordUpdate,
+            doAddRecord:this.doAddRecord,
+            doGetQueryRecord:this.doGetQueryRecord,
+            getOneRecord:this.getOneRecord,
+            checkState: this.checkState,
+            user: this.user,
           }
           this.state = {
             dataQuerySingle: {},
@@ -39,7 +53,8 @@ export const AppContext = React.createContext()
             dom2: document.getElementById('msg2'),
             showModal: false,
             sql: "SELECT * FROM coronavirusonly LIMIT 10",
-            loading: null
+            loading: null,
+            // user: null
           }
           
           app.initializeApp(config);
@@ -47,17 +62,21 @@ export const AppContext = React.createContext()
           this.auth = app.auth();
           this.db = app.firestore()
           this.googleProvider =new app.auth.GoogleAuthProvider();
-          // this.ui = new firebaseui.auth.AuthUI(firebase.auth());
-          // console.log('GOOGLE PROVIDER',this.googleProvider)
-          // console.log('-------UI------',this.ui)
+          this.auth.onAuthStateChanged(function(user) {
+            if (user){
+              console.log('user accorfing to firebase',user)
+            }else{
+              console.log('according to firebase: no user info')
+            }    
+          });
         }
 
         
         updateUserAuth = (userInfo) =>{
-          console.log('WE HAVE THE USER INFO/;;;!', userInfo)
-          this.state.auth_user = userInfo
-          // this.state.auth_user = userInfo          
-          // this.setState({auth_user: userInfo})
+          console.log('Not in use')
+          // this.state.auth_user = userInfo
+          // // this.state.auth_user = userInfo          
+          // // this.setState({auth_user: userInfo})
         }
         getApiToken = async() => {
             const key = await this.getOneRecord('startup','exMEUpW9TkwEs0Tu5plh').get().then(doc =>{ return doc.data()}) 
@@ -81,19 +100,16 @@ export const AppContext = React.createContext()
         doAddRecord = (_collection) => this.db.collection(_collection).doc();
         doGetQueryRecord = (_collection, item_looking_for,filtering_item) => this.db.collection(_collection).where(item_looking_for, '==',filtering_item).get();
         getOneRecord = (_collection, item_wanted) => this.db.collection(_collection).doc(item_wanted)
-        checkState = () =>{
+        checkState = async() =>{ await
           this.auth.onAuthStateChanged(function(user) {
             if (user){
-              console.log('user accorfing to firebase',user) 
+              console.log('user accorfing to firebase',user)
             }else{
               console.log('according to firebase: no user info')
             }    
           });
-          console.log('checked state', this.state )
         }
-        logUserOutOfState = () =>{
-          this.state.auth_user = null
-        }
+        user = () => this.auth.currentUser
     
         //=======================================================================
         //                    QUERY DATA.WORLD FUNCTIONS

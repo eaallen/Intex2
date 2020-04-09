@@ -1,23 +1,34 @@
 import React,{useContext} from 'react';
 import { useHistory } from "react-router-dom";
 import {Row, Col,Jumbotron,Container} from 'react-bootstrap';
+import { withFirebase } from '../Firebase';
 
-function Home(props) {
+function HomeBase(props) {
+    let user = props.context.user()
+    console.log('<><><>',user)
     return (
         <div className="text-light bg-dark">
-            {/* <img src='src\images\mount.jpeg'></img> */}
-            <img src=''></img>
-            <Jumbotron class="jumbotron" className='text-center jumbotron'>
-                <h1 className="text-dark">About Us</h1>
-                <p className="text-dark">
-                    this site is currently just for testing 
-                </p>
+
+                        <Jumbotron className='text-center'>
+                <h1 className="text-dark">
+                    {user?
+                    <>
+                       Welcome, {user.email}
+                    </>
+                    :
+                    <>
+                        Analytics that Save Lives.
+                    </>}
+
+                </h1>
+                
+
             </Jumbotron>
 
             <Row  className='center-row'>
                 <Col>
                     <h1>
-                        Our Mission
+                        Research Campaigns                        
                     </h1>
                     <Container>
                     <p>
@@ -28,7 +39,7 @@ function Home(props) {
                 </Col>
                 <Col>
                     <h1>
-                        Our Founders
+                        Predict
                     </h1>
                     <p>
                         Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem 
@@ -37,7 +48,7 @@ function Home(props) {
                 </Col>
                 <Col>
                     <h1>
-                      Our Legeacy
+                      SandBox SQL
                     </h1>
                     <p>
                         Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem 
@@ -49,5 +60,5 @@ function Home(props) {
         </div>
   );
 }
-
+const Home = withFirebase(HomeBase)
 export default Home;
