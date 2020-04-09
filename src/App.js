@@ -7,7 +7,6 @@ import Top from './comps/Containers/Top'
 import Home from './comps/Containers/Home'
 import Search from './comps/Containers/Search'
 import Analyze from './comps/Containers/Analyze'
-import Analyze2 from './comps/Containers/Analyze2'
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,10 +20,10 @@ import ForgotPassword from './comps/Containers/ForgotPassword';
 function AppBase(props) {
   console.log('props.firebase.state.dataQuerySingle',props.context.key)
   return (
-    <div className="App scroll-div" >
+    <div className="App" >
     <Router>
 
-      {/* <Container fluid>  */}
+      <Container fluid> 
 
         <Row>
           <Col xl={12}>
@@ -63,7 +62,7 @@ function AppBase(props) {
                   
           
         </Row>
-      {/* </Container>  */}
+      </Container> 
     </Router> 
     </div>
   );

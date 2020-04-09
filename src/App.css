@@ -42,13 +42,16 @@
   opacity: 0.5;
 }
 .scroll-div{
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow-x: scroll;
   /* padding-right: 1rem; */
 }
 .home-img{
   /* background-image: url('./nasa-Q1p7bh3SHj8-unsplash.jpg'); */
   background-image: url('/src/images/mount.jpeg');
+}
+.sticky-header{
+  position: sticky !important;
+  top: 0 !important;
 }
 
 .jumbotron {

@@ -20,7 +20,7 @@ function SearchOverView(props){
     }else if(title ==='Failed Attempts'){
         src='https://public.tableau.com/views/INTEX/FailedAttempts?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'
         desc='There are a few GoFundMe Campaigns that do not get the traction that they need, are the campaigns are suspended before reaching its goal.' + 
-        'On the right is a visual description of the campaigns that were suspended before reaching their goals.'
+        'On the right is a visual description of the campaigns that were suspended before reaching their goals. Only campaign_id 39375174 is avaliable to view at this time.'
     }
     else {
         src='https://public.tableau.com/views/INTEX/Overall?:showVizHome=no&embed=true&display_count=y&publish=yes&:origin=viz_share_link'

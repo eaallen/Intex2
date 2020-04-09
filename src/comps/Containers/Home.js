@@ -9,7 +9,7 @@ function HomeBase(props) {
     return (
         <div className="text-light bg-dark">
 
-                        <Jumbotron className='text-center'>
+            <div className='text-center jumbotron' style={{backgroundColor:'smokewhite'}}>
                 <h1 className="text-dark">
                     {user?
                     <>
@@ -23,7 +23,7 @@ function HomeBase(props) {
                 </h1>
                 
 
-            </Jumbotron>
+            </div>
 
             <Row  className='center-row'>
                 <Col>
@@ -32,8 +32,8 @@ function HomeBase(props) {
                     </h1>
                     <Container>
                     <p>
-                        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem 
-                        ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur
+                    Get a better understanding of the most and least successful campaigns on record. Use the pre-made search options to 
+                    quickly see visual over views and details about outliers. Use the data provided to execute a successful GoFundMe campaign.  
                     </p>
                     </Container>
                 </Col>
@@ -42,8 +42,8 @@ function HomeBase(props) {
                         Predict
                     </h1>
                     <p>
-                        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem 
-                        ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur
+                    Learn how a future GoFundME campaign might fair when published. Our Machine Learning algorithms take the parameters
+                     provided and return a predicted amount of donors and the total funds that could be raised.                     
                     </p>
                 </Col>
                 <Col>
@@ -51,8 +51,8 @@ function HomeBase(props) {
                       SandBox SQL
                     </h1>
                     <p>
-                        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem 
-                        ipsum quia dolor sit amet, consectetur Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur
+                    Explore the data with an unlimited amount of possibilities. SandBox SQL gives you the freedom of writing SQL with out worrying about UPDATE, DROP, etc.
+                    This is possible because SandBox SQL was purposely designed for data viewing only.                     
                     </p>
                 </Col>
             </Row>    
